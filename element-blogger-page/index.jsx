@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './element-bloggers-page.css';
+import './element-bloggers-page.scss';
 
 
 class ElementBloggerPage extends Component {
