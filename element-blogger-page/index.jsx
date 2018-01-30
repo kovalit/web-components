@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './element-bloggers-page.scss';
+import './element-bloggers-page.css';
 
 
 class ElementBloggerPage extends Component {
@@ -10,7 +10,7 @@ class ElementBloggerPage extends Component {
 
     render() {
         return (
-            <div className={styles.bla}>
+            <div className="bla">
                 WWW
             </div>
         );
