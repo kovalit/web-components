@@ -1,0 +1,83 @@
+@import "styles/mixins/breakpoint";
+
+.card-number {
+    width: 32px;
+    height: 60px;
+    display: inline-block;
+    background-color: #e5e5e5;
+    border-radius: 24px;  
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    text-align: center;
+    
+    @include breakpoint(portrait-tablet) {
+        top: 16px;
+        left: 16px;
+        width: 48px;
+        height: 80px;
+    }
+    
+}
+
+.card-number__value{
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    background: #000;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    font-family: LatoBold;
+    float: left;
+    
+    @include breakpoint(portrait-tablet) {
+        font-size: 26px;
+        line-height: 48px;
+        width: 48px;
+        height: 48px;
+    }
+}
+
+.card-number__score {
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    line-height: 24px;
+    display: inline-block;
+    
+    @include breakpoint(portrait-tablet) {
+        line-height: 26px;
+        font-size: 16px;
+    }
+}
+
+.card-number__badge {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 9px;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: bold;
+    background-color: #FF3B30;
+    text-align: center;
+    top: -5px;
+    right: 0;
+}
+
+.card-number__label {
+    display: none;
+    font-size: 10px;
+    padding: 6px 0;
+    margin-top: 4px;
+    text-align: center;
+    font-family: LatoRegular;
+    line-height: 12px;
+    
+    @include breakpoint(portrait-tablet) {
+        display: block;
+    }
+}
