@@ -41,7 +41,7 @@
     .center {
           width: 8px;
           height: $barHeigth;
-          @include background-image("/img/bar-center.png");
+          @include background-image("img/bar-center.png");
           background-repeat: no-repeat;
           background-size: 100% 100%;
           left: 50%;
