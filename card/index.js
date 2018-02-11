@@ -1,5 +1,6 @@
 import React from 'react';
 import CardNumber from 'components/card-number';
+import CriterionSlider from 'components/criterion-slider';
 import './card.scss';
 
 const Card = props => {
@@ -17,7 +18,9 @@ return (
 		    <img src="https://picture.whatsbetter.me/picture/size/302-auto?hash=B_KbSWjOsfYbZljRIXC_S9oROjHQ9D6Ht_T01naIN2bnyHW223J1ow==" />
 		</div>
 	    </div>
-	    <div className="card-right">Средняя оценка</div>	    
+	    <div className="card-right">
+		<CriterionSlider />
+	    </div>	    
 	</div>
     );
 };
