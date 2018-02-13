@@ -1,4 +1,4 @@
-@import "styles/mixins/variables";
+@import "styles/constant";
 @import "styles/mixins/text-overflow";
 @import "styles/mixins/animation";
 @import "styles/mixins/image";
@@ -41,7 +41,7 @@
     .center {
           width: 8px;
           height: $barHeigth;
-          @include background-image("img/bar-center.png");
+          @include background-image("criteria/middle.png");
           background-repeat: no-repeat;
           background-size: 100% 100%;
           left: 50%;

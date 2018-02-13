@@ -19,7 +19,7 @@ return (
 		</div>
 	    </div>
 	    <div className="card-right">
-		<CriterionSlider />
+		<CriterionSlider isEditable={true} defaultValue={-0.5} />
 	    </div>	    
 	</div>
     );
