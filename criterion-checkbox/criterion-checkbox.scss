@@ -1,0 +1,41 @@
+@import "styles/mixins/text-overflow";
+
+.criterion {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px 0 24px;
+    color: #000;
+    font-size: 13px;
+    background-color: #F8F8F8;
+    background-image: url(/v3n/img/hole@2x.png);
+    background-repeat: no-repeat;
+    background-size: 12px 12px;
+    background-position: 6px 6px;
+    border-radius: 5px;
+    margin: 4px 8px 0 0;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    float: left;
+    text-transform: lowercase;
+    font-family: LatoBold;
+    @include  text-overflow;
+    
+    &.selected {
+        background-image: url("/v3n/img/checked@2x.png"); 
+    }
+}
+
+.criterion-more {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    display: inline-block;
+    float: left;
+    cursor: pointer;
+    line-height: 20px;
+    color: #9B9B9B;
+    text-align: center;
+    background-color: #f8f8f8;
+    margin: 4px 8px 0px 0;
+}
