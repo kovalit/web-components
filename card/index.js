@@ -1,6 +1,7 @@
 import React from 'react';
 import CardNumber from 'components/card-number';
 import CriterionSlider from 'components/criterion-slider';
+import Comment from 'components/comment';
 import './card.scss';
 
 const Card = props => {
@@ -20,6 +21,7 @@ return (
 	    </div>
 	    <div className="card-right">
 		<CriterionSlider isEditable={true} defaultValue={-0.5} />
+		<Comment />
 	    </div>	    
 	</div>
     );

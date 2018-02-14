@@ -1,0 +1,365 @@
+@import "styles/mixins/breakpoint";
+
+.comment-header {
+    display: table;
+    width: 100%;
+    
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+.comment-avatar {
+    display: table-cell;
+    vertical-align: middle;
+    width: 40px;
+    padding: 0;
+    text-align: center;
+}
+
+.comment-username {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.username {
+    color: #4A4A4A;
+    line-height: 16px;
+    font-family: LatoBold;
+    font-size: 14px;
+}
+
+.userinfo {
+    color: #9b9b9b;
+    line-height: 16px;
+    font-size: 12px;
+}
+
+
+.comment-score {
+    display: table-cell;
+    vertical-align: middle;
+    width: 32px;
+}
+
+.comment-content{
+    font-size: 14px;
+    line-height: 16px;
+    color: #333333;
+    font-family: LatoRegular;
+    padding: 8px 0px 0px 40px;
+    
+    &:empty {
+       padding: 0; 
+    }
+}
+
+.comment-content__reply {
+    float: left;
+    padding-right: 4px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.comment-date {
+    padding: 0px 0px 4px 40px;
+    font-size: 10px;
+    color: #ccc;
+}
+
+.comment-footer {
+    padding: 4px 0px 0px 40px;
+    
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+.comment-button {
+    color: #4a4a4a;
+    font-size: 14px;
+    cursor: pointer;
+    float: left;
+    font-family: LatoBold;
+    margin-right: 12px;
+}
+
+.comment-tools {
+    float: left;
+    width: 14px;
+    height: 14px;
+    margin: 2px 6px;
+    cursor: pointer;
+    background-image: url(/v3n/img/icons/edit.svg);
+    background-repeat: no-repeat;
+    background-size: 14px;
+    opacity: 0.6;
+    &:hover{
+        opacity: 1;
+    } 
+}
+.comment-edit {
+    background-image: url(/v3n/img/icons/edit.svg);
+    background-repeat: no-repeat;
+    background-size: 14px;
+}
+
+.comment-remove {
+    background-image: url(/v3n/img/icons/delete.svg);
+    background-repeat: no-repeat;
+    background-size: 14px;
+}
+
+.comment-useful {
+    float: right;
+}
+
+.comment-more, .comment-new {
+    height: 32px;
+    background-color: #E5E5E5;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 4px;
+    color: #4A4A4A;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: LatoBold;
+    
+    &:hover {
+        background-color: #E5E5E5;
+        color: #000;
+    }
+    
+}
+
+.comment-new span {
+    display: inline-block;
+    background-color: #FF3B30;
+    color: #fff;
+    font-family: LatoBold;
+    font-size: 12px;
+    padding: 0 8px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 4px;
+}
+
+.new-comments .comment-new {
+    position: absolute;
+    height: 16px;
+    padding: 0 4px;
+    top: -4px;
+    left: -4px;
+    line-height: 16px;
+    background: #FF3B30;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+    font-family: LatoBold;
+}
+
+.reply-more {
+    margin: 0px 0 16px 48px;
+    height: 32px;
+    background-color: #EEEEEE;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 4px;
+    color: #9B9B9B;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.comment-editor {
+    display: table;
+    width: 100%;
+}
+
+.comment-col1 {
+    display: table-cell;
+    width: 48px;
+    vertical-align: top;
+    padding: 0px 0px 0 8px;
+}
+
+.comment-col2 {
+    display: table-cell;
+}
+
+.comment-body{
+    background-color: #eee;
+    padding: 8px;
+    border-radius: 4px;
+    
+    .bar_criterion {
+        margin: 8px 0 28px 0;
+    }
+}
+
+.comment-text-hidden {
+    display: none;
+}
+
+.comment-text-more {
+    text-decoration: underline;
+    padding-left: 4px;
+    cursor: pointer;
+}
+
+.comment-attaches {
+    padding-left: 40px;
+
+    
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+
+.attached {
+    display: none;
+}
+
+
+
+.attached:nth-child(1) {
+    display: inline-block;
+}
+.attached:nth-child(2) {
+    display: inline-block;
+}
+.attached:nth-child(3) {
+    display: inline-block;
+}
+
+.comment-attaches-3, .comment-attaches-over3 {
+    .attached:nth-child(1) {
+        width: 240px;
+        height: 160px;
+    }
+    .attached:nth-child(2) {
+        width: 120px;
+        height: 76px;
+    }
+    .attached:nth-child(3) {
+        width: 120px;
+        height: 76px;
+    }
+}
+
+.comment-attaches-over3 {
+ 
+    .attached:nth-child(3):after {
+        content: "Еще";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        color: #fff;
+        line-height: 76px;
+        background: rgba(0,0,0,.5);
+        border-radius: 4px;
+    }
+}
+
+
+.comment-tooltip {
+    position: absolute;
+    background: #F8F8F8;
+    width: 384px;
+    z-index: 9999;
+    padding: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    border-radius: 4px;
+    
+    hr {
+        display: none;
+    }
+}
+
+.comment-sort {
+    margin-top: 16px;
+    display: none;
+}
+
+.comment-sort__item {
+    font-size: 12px;
+    font-family: LatoBold;
+    color: #9B9B9B;
+    height: 24px;
+    line-height: 24px;
+    background: #fff;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 0 24px 0px 8px;
+    margin-right: 4px;
+    position: relative;
+    cursor: pointer;
+    background-color: #F2F2F2;
+    
+    &:hover {
+        background-color: #E5E5E5;
+        color: #000;
+    }
+    
+    &.active {
+        background: #fff;
+        color: #000
+    }
+    
+    &:after{
+        content: "";
+        background-repeat: no-repeat;
+        background-image: url(/v3n/img/icons/down.svg);
+        background-size: 100%;
+        width: 9px;
+        height: 5px;
+        right: 8px;
+        top: 10px;
+        position: absolute;
+    }
+    
+    &.up:after {
+        -webkit-transform: rotate(-180deg);
+        -moz-transform: rotate(-180deg);
+        -ms-transform: rotate(-180deg);
+        -o-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+    }
+}
+
+.comment-sharing {
+    display: inline-block;
+    float: right;
+    border: 1px solid #eee;
+    height: 24px;
+    line-height: 22px;
+    border-radius: 4px;
+    font-family: LatoBold;
+    font-size: 14px;
+    color: #4A4A4A;
+    padding: 0 8px 0 16px;
+    cursor: pointer;
+    background-image: url(/v3n/img/icons/share.svg);
+    background-repeat: no-repeat;
+    background-size: 15px 16px;
+    background-position: 4px 3px;
+    text-indent: -9999px;
+    overflow: hidden;
+    
+    @include breakpoint(mobile-medium) {
+       text-indent: 0;
+       padding: 0 8px 0 24px;
+    }
+}
+

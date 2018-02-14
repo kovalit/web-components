@@ -1,0 +1,72 @@
+.useful {
+    float: right;
+}
+
+.useful-text {
+    display: inline-block;
+    color: #9B9B9B;
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 8px;
+    font-size: 10px;
+}
+
+.useful-button {
+    font-family: LatoBold;
+    display: inline-block;
+    float: left;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    color: #9B9B9B;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-left: 4px;
+    background-color: #F2F2F2;
+    
+        
+    &:hover {
+        background-color: #E5E5E5;
+        color: #000;
+    }
+    
+    &.active {
+        background-color: #fff;
+        color: #000;
+    }
+} 
+
+.useful-button__icon {
+    font-family: Arial;
+    font-size: 18px;
+    height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    display: inline-block;
+    float: left;
+    padding: 0 10px;
+   
+}
+
+.useful-button_minus {
+    .useful-button__icon {
+       line-height: 22px; 
+    }
+}
+
+.useful-button_plus {
+    .useful-button__icon {
+       line-height: 24px; 
+    }
+}
+
+
+.useful-button__counter{
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    padding: 0 10px 0 0;
+}
