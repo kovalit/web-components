@@ -3,6 +3,7 @@ import CardNumber from 'components/card-number';
 import CriterionSlider from 'components/criterion-slider';
 import CriterionCheckbox from 'components/criterion-checkbox';
 import Comment from 'components/comment';
+import UserItem from 'components/user-item';
 
 import './card.scss';
 
@@ -25,6 +26,7 @@ return (
 		<CriterionSlider isEditable={true} defaultValue={-0.5} />
 		<Comment />
 		<CriterionCheckbox />
+		<UserItem />
 	    </div>	    
 	</div>
     );

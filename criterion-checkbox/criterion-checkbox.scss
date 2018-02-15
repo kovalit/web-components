@@ -1,4 +1,6 @@
+@import "styles/constant";
 @import "styles/mixins/text-overflow";
+@import "styles/mixins/image";
 
 .criterion {
     height: 24px;
@@ -7,7 +9,7 @@
     color: #000;
     font-size: 13px;
     background-color: #F8F8F8;
-    background-image: url(/v3n/img/hole@2x.png);
+    @include  background-image("criteria/hole.png");
     background-repeat: no-repeat;
     background-size: 12px 12px;
     background-position: 6px 6px;
@@ -22,7 +24,7 @@
     @include  text-overflow;
     
     &.selected {
-        background-image: url("/v3n/img/checked@2x.png"); 
+        @include  background-image("criteria/checked.png");
     }
 }
 

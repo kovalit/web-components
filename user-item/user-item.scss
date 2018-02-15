@@ -1,0 +1,93 @@
+.user-item {
+    display: table;
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    min-height: 40px;
+
+    &:hover {
+        background-color: #fafafa;
+    }
+    
+    &.active,  &.selected{
+        background-color: #eee;
+    }
+}
+
+.user-row_popup {
+    margin-bottom: 4px;  
+}
+  
+.user-cell__checkbox{
+    background: #eee;
+    border-radius: 4px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0 auto;
+    float: right;
+    
+    &.active {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-image: url(/v3n/img/icons/checkbox.svg)
+    }
+}
+
+.selected {  
+    .user-cell__checkbox {
+        background-color: #fff;
+    }
+}
+
+
+.online:after {
+    content: "";
+    width: 4px;
+    height: 4px;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    border-radius: 50%;
+    background: #1fb715;
+}
+
+.user-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.user-cell_left {
+    width: 40px;
+    text-align: center;
+    vertical-align: middle; 
+}
+
+.user-cell_right {
+   text-align: right;
+   padding: 0 8px 0 4px;
+}
+
+.user-cell__avatar{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-size: 100% 100%;
+    display: inline-block;
+}
+
+.user-cell__name {
+    font-size: 12px;
+    font-family: LatoMedium;
+    color: #4A4A4A;
+    line-height: 16px;
+    
+}
+
+.user-cell__carma {
+    color: #9b9b9b;
+    font-size: 12px; 
+    line-height: 16px;
+    font-family: LatoRegular;
+}
