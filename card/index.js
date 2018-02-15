@@ -11,7 +11,7 @@ import './card.scss';
 const Card = props => {
 return (
 	<div className="card">
-	    <CriterionBasket />
+	  
 	    <CardNumber score="4.0" number="1" />
 	    <div className="card-header">
 		<div className="card-header__title">Бегущий по лезвию 2049</div>

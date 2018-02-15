@@ -23,7 +23,7 @@ class Comment extends Component {
     getPreamble(text){
 	let limit = 20;
 	
-	if (text.length <= limit) {
+	if (text.length <= limit || this.state.fullText) {
 	    return text;
 	}
 	
@@ -38,16 +38,13 @@ class Comment extends Component {
 
 	return [
 		<span key="1">{visibleText}</span>,
-		<span key="2"
+		<span key="2" style={{display: "inlile-block"}}> ... </span>,
+		<span key="3"
 		    onClick={()=>this.setState({fullText: true})} 
-		    style={{display: this.state.fullText ? "none" : "inlile-block"}} 
 		    className="comment-text-more">
 		    Читать далее
 		</span>,
-		<span key="3" 
-		    style={{display: this.state.fullText  ? "inline" : "none"}}>
-		    {hiddenText}
-		</span>
+		<span key="4" style={{display: "none"}}>{hiddenText}</span>
 	];
     }
     
