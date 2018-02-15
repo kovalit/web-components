@@ -1,0 +1,139 @@
+@import "styles/constant";
+@import "styles/mixins/transform";
+@import "styles/mixins/breakpoint";
+@import "styles/mixins/text-overflow";
+@import "styles/mixins/image";
+
+
+.popup-auth {
+    .popup-window {
+        max-width: 640px;
+        width: calc(100% - 32px);
+        border-radius: 4px;
+        padding-bottom: 36px;
+        @include transform("translate(-50%, -50%)");
+        top: 50%;
+        left: 50%;
+            
+        @include breakpoint(portrait-tablet) {
+            padding-bottom: 56px;
+        }  
+    }
+    
+    .close {
+        display: none;
+    }
+}
+
+.auth-header {
+    text-align: left;
+    padding: 16px 0 0 16px;
+    
+    @include breakpoint(mobile-medium) {
+        padding: 24px 0 0 32px;
+    } 
+    
+    @include breakpoint(mobile-medium) {
+        padding: 32px 0 0 32px;
+    } 
+}
+
+.auth-header__logo {
+    width: 220px;
+    height: 48px;
+    @include background-image('logos/logo.svg')
+    background-repeat: repeat-x;
+    background-position: center center;
+    background-size: 100% 100%;
+    display: inline-block;
+}
+
+.auth-content {
+    padding: 16px 24px 0 24px;
+
+    @include breakpoint(mobile-small) {
+        padding: 32px 32px 0 32px;
+    } 
+    
+    @include breakpoint(mobile-medium) {
+        padding: 56px 80px 0 80px;
+    } 
+}
+
+.auth-content__title {
+    font-size: 18px;
+    font-family: LatoBold;
+    color: #000;
+    padding: 0 0 8px 0; 
+    text-align: left;
+    
+    @include breakpoint(mobile-medium) {
+        font-size: 32px;
+    } 
+
+}
+
+.auth-content__subtitle {
+    font-size: 14px;
+    font-family: LatoMedium;
+    color: #000;
+    text-align: left;
+    padding: 0 0 8px 0;
+    
+    @include breakpoint(mobile-medium) {
+        font-size: 18px;
+    } 
+}
+
+.auth-socials {
+    padding: 16px 24px 0 24px ;
+    
+    @include breakpoint(mobile-small) {
+        padding: 32px 32px 0 32px;
+    }
+    
+    @include breakpoint(mobile-medium) {
+        padding: 32px 80px 0 80px;
+    } 
+}
+
+
+.auth-socials-btn {
+    text-align: center;
+    height: 48px;
+    line-height: 48px;
+    color: #fff;
+    font-size: 16px;
+    font-family: LatoBold;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    max-width: 480px;
+    width: 100%;
+
+    &:link, 
+    &:visited, 
+    &:hover,
+    &:active {
+        text-decoration: none;
+        color: #fff;
+    }
+    @include text-overflow;
+    
+    @include breakpoint(mobile-small) {
+         margin-bottom: 16px;
+    }
+}
+
+.auth-socials-btn_fb {
+    background-color: #2F4EA0;
+}
+
+.auth-socials-btn_ok {
+    background-color: #F09400;
+}
+
+.auth-socials-btn_vk {
+    background-color: #2A60D8;
+}

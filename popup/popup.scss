@@ -1,0 +1,32 @@
+@import "styles/mixins/breakpoint";
+@import "styles/mixins/prefixes";
+
+.popup {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgba(0,0,0, .5);
+    text-align: center;
+    z-index: 9999;
+}
+
+.popup-window {
+    max-width: 830px;
+    border: 0;
+    outline: 0;
+    background-color: #fff;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    
+    @include breakpoint(portrait-tablet) {
+        @include border-radius(8px);
+    }
+}

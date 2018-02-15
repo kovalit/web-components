@@ -29,6 +29,9 @@ class CriterionBasket extends Component {
 	if (!active) {
 	   selected.push(criterion); 
 	}
+	else {
+	    
+	}
 	
 	this.setState({
 	    selected: selected
