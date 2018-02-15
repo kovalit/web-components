@@ -1,0 +1,44 @@
+@import "styles/constant";
+@import "styles/mixins/breakpoint";
+
+.criterion-basket{
+    background-color: #fff;
+    border: 2px solid #eee;
+    //position: absolute;
+    //display: none;
+    z-index: 101;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    width: 100%;
+    top: $headerHeight + 56;
+        
+    @include breakpoint(portrait-tablet) {
+        top: $headerHeight;
+    }
+    
+    &.visible {
+        display: block;
+    }
+    
+    &.hidden {
+        display: none;
+    }   
+   
+}
+
+.criterion-group {
+    text-align: left;
+    padding: 16px 16px 16px 16px;
+    
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+.criterion-group__header {
+    font-size: 14px;
+    font-family: LatoRegular;
+    color: #9B9B9B;
+}

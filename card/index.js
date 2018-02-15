@@ -2,6 +2,7 @@ import React from 'react';
 import CardNumber from 'components/card-number';
 import CriterionSlider from 'components/criterion-slider';
 import CriterionCheckbox from 'components/criterion-checkbox';
+import CriterionBasket from 'components/criterion-basket';
 import Comment from 'components/comment';
 import UserItem from 'components/user-item';
 
@@ -10,6 +11,7 @@ import './card.scss';
 const Card = props => {
 return (
 	<div className="card">
+	    <CriterionBasket />
 	    <CardNumber score="4.0" number="1" />
 	    <div className="card-header">
 		<div className="card-header__title">Бегущий по лезвию 2049</div>
@@ -23,9 +25,9 @@ return (
 		</div>
 	    </div>
 	    <div className="card-right">
+		
 		<CriterionSlider isEditable={true} defaultValue={-0.5} />
 		<Comment />
-		<CriterionCheckbox />
 		<UserItem />
 	    </div>	    
 	</div>
