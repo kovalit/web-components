@@ -4,6 +4,7 @@ import CriterionSlider from 'components/criterion-slider';
 import CriterionCheckbox from 'components/criterion-checkbox';
 import CriterionBasket from 'components/criterion-basket';
 import Comment from 'components/comment';
+import CommentEditor from 'components/comment-editor';
 import UserItem from 'components/user-item';
 
 import './card.scss';
@@ -27,6 +28,7 @@ return (
 	    <div className="card-right">
 		
 		<CriterionSlider isEditable={true} defaultValue={-0.5} />
+		<CommentEditor score={0.5}/>
 		<Comment />
 		<UserItem />
 	    </div>	    
