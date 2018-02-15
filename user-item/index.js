@@ -2,7 +2,7 @@ import React from 'react';
 import './user-item.scss';
 
 
-const User = () => {
+const UserItem = () => {
 return (
 	<div className="user-item">
 	    <div className="user-cell user-cell_left">
@@ -20,6 +20,6 @@ return (
     );
 };
 
-export default User;
+export default UserItem;
 
 

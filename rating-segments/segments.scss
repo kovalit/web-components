@@ -1,0 +1,78 @@
+@import "styles/constant";
+@import "styles/mixins/image";
+
+.segments {
+    margin: 14px 0 10px 0; 
+    border-radius: 6px;
+    overflow: hidden;
+    display: inline-block;
+    float: left;
+    height: 24px;
+    cursor: pointer;
+
+    .label {
+        display: inline-block; 
+        float: left;
+        padding: 0 10px;
+    }
+}
+
+.segments__title {
+    display: inline-block;
+    float: left;
+    color: #9B9B9B;
+    font-family: LatoRegular; 
+    
+}
+
+.segments__item {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 20px;
+    border-bottom: 2px dotted #9B9B9B;
+    color: #9B9B9B;
+    
+    
+    &:first-child{
+       margin-left: 0; 
+       //width: 108px;
+    }
+    
+    .users-cell__avatar {
+       padding: 0;
+       margin: 8px 0 0 -4px;
+       width: 32px;
+       height: 32px;
+       float: left;
+    }
+    
+    .dropdown {
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        float: right;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: 8px 6px;
+        background-position: 4px 6px;
+        @include background-image("icons/dropdown.svg");
+         
+        &:hover {
+            background-color: #fff;
+        }
+    }
+    
+    &.active {
+        color: #000;
+        border-bottom: 0;
+        
+        .dropdown {
+            background-color: #fff;
+        }
+    }
+}
+
+.segments__item:last-child {
+    border-right: 0;
+}
