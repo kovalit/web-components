@@ -67,7 +67,6 @@ class LandingRating extends Component {
 		});
 	    });
     
-	console.log(criterion, active)
     }
     
     

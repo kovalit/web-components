@@ -152,11 +152,9 @@ const Layout = props => {
 			    </div>
 			    <div className="swiper-container updates-slider">
 				<div className="swiper-wrapper">
-
 				    <For each="update"index="index" of={props.updates}>
-					<Update key={index} update={update} />
+					<Update key={index} update={update} sphere={props.spheres[update.sphere]} />
 				    </For>
-
 				</div>
 			    </div>
 			</div>
