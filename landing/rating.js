@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 
+import CriterionCheckbox from 'components/criterion-checkbox';
+import CriterionBar from 'components/criterion-bar';
 
-class Header extends Component {
+class LandingRating extends Component {
     
     constructor(props) {
 	super(props);
@@ -12,6 +14,8 @@ class Header extends Component {
 	    objects: [],
 	    selectedCriteria: [],
 	};
+	
+	this.onCriteriaClick = this.onCriteriaClick.bind(this)
     }
     
     componentDidMount() {
@@ -19,15 +23,19 @@ class Header extends Component {
 	    .then(res => res.json())
 	    .then(body => {
 		
-		let selected = body.data.splice(0,4)
+		let criteria = [];
+		let index = 0;
+		for (let criterion of body.data) {
+		    criterion.active = index < 4;
+		    criteria.push(criterion);
+		    index++;
+		}
 		this.setState({
-		    criteria: body.data,
-		    selectedCriteria: selected,
+		    criteria: criteria,
 		});
 		
-		let criteria = selected.map(item=>item.id).join(",");
-		console.log('http://whatsbetter.me/api/spheres/pda/objects?limit=3&criteria=' + criteria)
-		return fetch('http://whatsbetter.me/api/spheres/pda/objects?limit=3&criteria=' + criteria)
+		let list = criteria.filter(item => item.active).map(item=>item.id).join(",");
+		return fetch('http://whatsbetter.me/api/spheres/pda/objects?limit=3&criteria=' + list)
 	    })
 	    .then(res => res.json())
 	    .then(body => {
@@ -35,6 +43,31 @@ class Header extends Component {
 		    objects: body.data
 		});
 	    });
+    }
+    
+    onCriteriaClick(criterion, active){
+	let criteria = this.state.criteria.slice();
+	for (let item of criteria) {
+	    if (item.id === criterion.id) {
+		item.active = !item.active;
+	    }
+	    
+	}
+	
+	this.setState({
+	     criteria: criteria,
+	});
+	
+	let list = criteria.filter(item => item.active).map(item=>item.id).join(",");
+	fetch('http://whatsbetter.me/api/spheres/pda/objects?limit=3&criteria=' + list)
+	    .then(res => res.json())
+	    .then(body => {
+		this.setState({
+		    objects: body.data
+		});
+	    });
+    
+	console.log(criterion, active)
     }
     
     
@@ -72,15 +105,16 @@ class Header extends Component {
 			    <div className="rates-block-main-filter">
 				<h4>Популярные критерии</h4>
 				<div className="rates-block-main-filter-colored">
-				    <For each="criterion" index="index" of={this.state.selectedCriteria}>
-					<a key={index} href="#" className="tag" style={{backgroundColor: "#e67159"}}>{criterion.label}</a>
+				    <For each="criterion" index="index" of={this.state.criteria}>
+					<CriterionCheckbox 
+					    key={index}
+					    criterion={criterion} 
+					    onClick={this.onCriteriaClick}
+					    active={criterion.active} 
+					    size={32} />
 				    </For>
 				</div>
 				<div className="rates-block-main-filter-btm">
-				    <a href="#" className="tag2">надежность</a>
-				    <a href="#" className="tag2">универсальность</a>
-				    <a href="#" className="tag2">приятный на ощупь</a>
-				    <a href="#" className="tag2">современный дизайн</a>
 				    <a href="#" className="tag2 tag2-last">Другие критерии</a>
 				</div>
 			    </div>
@@ -89,7 +123,7 @@ class Header extends Component {
 				    <div className="swiper-wrapper">
 				    
 					<For each="object" index="index" of={this.state.objects}>
-					<div className="swiper-slide">
+					<div key={index} className="swiper-slide">
 					    <div className="rates-block-item">
 						<a href="#" className="rates-block-item-img">
 						    <img src="/img/phone@2x.png" alt=""/>
@@ -101,14 +135,16 @@ class Header extends Component {
 						</a>
 						<div className="rates-block-item-title clearfix">
 						    <h3>{object.label}</h3>
-						    <span className="rates-block-item-title-rate">67 мнений</span>
+						    <span className="rates-block-item-title-rate">{object.votes}</span>
 						</div>
 						<div className="rates-block-item-stat">
 						    <For each="key" index="index" of={Object.keys(object.criteria)}>
-							<div className="rates-block-item-stat-line">
-							    <span className="rates-block-item-stat-colored" style={{backgroundColor: "#e67159", right: "2%"}}></span>
-							    <span className="rates-block-item-stat-number">{(object.criteria[key].score * 5).toFixed()}</span>
-							</div>
+							<CriterionBar
+							    key={index}
+							    id={object.criteria[key].criterion.id}
+							    title=""
+							    score={object.criteria[key].score}
+							    size={12} />
 						    </For>
 						    
 						    
@@ -138,6 +174,6 @@ class Header extends Component {
     }
 };
 
-export default Header;
+export default LandingRating;
 
 

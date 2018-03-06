@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
-import './criterion-checkbox.scss';
+
+if (typeof window !== 'undefined') {
+    require('./criterion-checkbox.scss');
+}
+
+import helpers from 'helpers';
+import rand from 'random-seed';
 
 class CriterionCheckbox extends Component {
     
     constructor(props) {
 	super(props);
-	this.size = this.props.size || 24;
 	
+	this.size = this.props.size || 24;
+	let gen = rand.create(this.props.criterion.id);
+	let index = gen(24);
+
 	this.state = {
 	    active: this.props.active || false,
 	    clickable: this.props.clickable || true,
-	    color: 'rgb(90, 191, 192)'
+	    color : helpers.color(index),
 	};
 	this.onClick = this.onClick.bind(this);
     }
