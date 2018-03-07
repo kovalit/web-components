@@ -6,14 +6,16 @@ import PopupPost from 'components/popup-post';
 const Post = ({post}) => {
     
     const onClick = () => {	
-	ReactDOM.render(<PopupPost />, document.getElementById('popup-container'));
+	ReactDOM.render(<PopupPost alias={post.alias} />, document.getElementById('popup-container'));
     };
     
     return (
 	<div onClick={onClick} className="swiper-slide">
 	    <div onClick={onClick.bind(null, post.alias)}  className="news-slider-item">
 		<span className="news-slider-img">
-		    <img src={post.preamble_images[0]} alt=""/>
+		    <For each="preamble_image" index="index" of={post.preamble_images}>
+			<img src={preamble_image} alt=""/>
+		    </For>
 		</span>
 		<span className="news-slider-title">{post.title}</span>
 		<p>{post.preamble}</p>
