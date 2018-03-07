@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Popup from 'components/popup';
-import './popup-auth.scss';
+if (typeof window !== 'undefined') require('./popup-auth.scss');
 
 
-const AuthSocial = () => {
+const PopupAuth = () => {
     return (
 	<Popup name="auth">
 	    <div className="close icons_close-round"></div>
@@ -24,4 +24,4 @@ const AuthSocial = () => {
     );
 };
 
-export default AuthSocial;
+export default PopupAuth;

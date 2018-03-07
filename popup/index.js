@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './popup.scss';
+import ReactDOM from 'react-dom';
+if (typeof window !== 'undefined') require('./popup.scss')
+
 
 class Popup extends Component {
     
@@ -7,38 +9,35 @@ class Popup extends Component {
 	super(props);
 	
 	this.state = {
-	    show: true
+	    show: this.props.show || true
 	};
+	document.body.style.overflow = "hidden";
 	
 	this.close = this.close.bind(this);
-	
+	this.innerClick = this.innerClick.bind(this);
     }
     
     close() {
-	this.setState({
-	    show: !this.state.show
-	});
+	document.body.style.overflow = "inherit";
+	let el = ReactDOM.findDOMNode(this).parentNode;
+	ReactDOM.unmountComponentAtNode(el);
+    }
+    
+    innerClick(e) {
+	e.stopPropagation();
     }
 
     render() {
-	if (!this.state.show) {
-	    return null;
-	}
-	
 	const classNames = [];
 	const name = ("name" in this.props) ? this.props.name : "default";
 
 	classNames.push('popup');
 	classNames.push('popup-' + name);
 
-	if ("close" in this.props) {
-	    classNames.push('popup-' + this.props.close);
-	}
-
 	return (
-	    <div className={classNames.join(' ')} onMouseUp={this.close}>	
-		<div className="popup-window inner-scroll">
-		    <div className="close icons_close-round"></div>
+	    <div ref="popup" className={classNames.join(' ')} onMouseUp={this.close}>	
+		<div onMouseUp={this.innerClick} className="popup-window inner-scroll">
+		    <div onClick={this.close} className="popup-close"></div>
 		    {this.props.children}
 		</div>
 	    </div>

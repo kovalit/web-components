@@ -1,0 +1,22 @@
+@import "styles/constant";
+@import "styles/mixins/transform";
+@import "styles/mixins/breakpoint";
+@import "styles/mixins/text-overflow";
+@import "styles/mixins/image";
+
+
+.popup-post {
+    text-align: left;
+    
+    .popup-window {
+        max-width: 100%;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        
+    }
+    
+    .close {
+        display: none;
+    }
+}

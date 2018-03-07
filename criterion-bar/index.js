@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-
-if (typeof window !== 'undefined') {
-    require('./criterion-bar.scss');
-}
-
 import helpers from 'helpers';
 import rand from 'random-seed';
+if (typeof window !== 'undefined') require('./criterion-bar.scss');
+
+
 
 const CriterionBar = ({id, title, score}) => {
     let progress = 0;

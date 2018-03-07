@@ -30,3 +30,16 @@
         @include border-radius(8px);
     }
 }
+
+
+.popup-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    background-image: url(http://whatsbetter.me/v3n/img/icons/close-round.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+}
