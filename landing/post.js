@@ -13,9 +13,22 @@ const Post = ({post}) => {
 	<div onClick={onClick} className="swiper-slide">
 	    <div onClick={onClick.bind(null, post.alias)}  className="news-slider-item">
 		<span className="news-slider-img">
-		    <For each="preamble_image" index="index" of={post.preamble_images}>
-			<img src={preamble_image} alt=""/>
-		    </For>
+		    <If condition={post.preamble_images.length === 1}>
+		    
+			<img src={post.preamble_images[0]} alt=""/>
+			
+		    <Else />
+		    
+			<span className="news-slider-img-wrap">
+			    <For each="preamble_images" index="index" of={post.preamble_images}>
+				<span key={index} className="news-slider-img-inner">
+				    <img src={preamble_images} alt=""/>
+				</span>
+			    </For>
+			</span>
+			
+		    </If>
+		    
 		</span>
 		<span className="news-slider-title">{post.title}</span>
 		<p>{post.preamble}</p>

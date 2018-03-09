@@ -15,7 +15,7 @@ class PopupPost extends Component {
     }
     
     componentDidMount(){
-	fetch('http://beta.whatsbetter.me/posts/json/' + this.props.alias)
+	fetch('/posts/json/' + this.props.alias)
 	    .then(res=>res.json())
 	    .then(body => {
 		this.setState({
