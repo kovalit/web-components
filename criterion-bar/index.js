@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import helpers from 'helpers';
 import rand from 'random-seed';
-if (typeof window !== 'undefined') require('./criterion-bar.scss');
+import './criterion-bar.scss';
 
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-if (typeof window !== 'undefined') require('./popup.scss')
+import './popup.scss';
 
 
 class Popup extends Component {

@@ -3,9 +3,10 @@ import React from 'react';
 import Post from 'components/landing/post';
 import Update from 'components/landing/update';
 import Header from 'components/landing/header';
-import Rating from 'components/landing/rating';
+
 
 const Layout = props => {
+
     return (
 	<div className="wrapper">
 	    <Header />
@@ -74,7 +75,7 @@ const Layout = props => {
 			</div>
 		    </div>
 		</div>
-		<Rating />
+		{props.children}
 	    </section>
 	    <section className="info-section">
 		<div className="info-block">

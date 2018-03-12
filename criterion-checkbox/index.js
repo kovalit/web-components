@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-
-if (typeof window !== 'undefined') {
-    require('./criterion-checkbox.scss');
-}
+import'./criterion-checkbox.scss';
 
 import helpers from 'helpers';
 import rand from 'random-seed';

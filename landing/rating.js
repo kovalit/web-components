@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
+import ReactDOM  from 'react-dom';
 
+//modules
+import helpers from 'helpers';
+
+// components
 import CriterionCheckbox from 'components/criterion-checkbox';
 import CriterionBar from 'components/criterion-bar';
+import CriterionBasket from 'components/criterion-basket';
+import Popup from 'components/popup';
+
 
 class LandingRating extends Component {
     
@@ -15,8 +23,10 @@ class LandingRating extends Component {
 	    selectedCriteria: [],
 	};
 	
-	this.onCriteriaClick = this.onCriteriaClick.bind(this)
+	this.onCriteriaClick = this.onCriteriaClick.bind(this);
+	//this.openCriteriaBasket = this.openCriteriaBasket.bind(this);
     }
+    
     
     componentDidMount() {
 	fetch('http://whatsbetter.me/api/spheres/pda/criteria?limit=8')
@@ -45,6 +55,8 @@ class LandingRating extends Component {
 	    });
     }
     
+
+    
     onCriteriaClick(criterion, active){
 	let criteria = this.state.criteria.slice();
 	for (let item of criteria) {
@@ -66,7 +78,6 @@ class LandingRating extends Component {
 		    objects: body.data
 		});
 	    });
-    
     }
     
     
@@ -104,7 +115,7 @@ class LandingRating extends Component {
 			    <div className="rates-block-main-filter">
 				<h4>Популярные критерии</h4>
 				<div className="rates-block-main-filter-colored">
-				    <For each="criterion" index="index" of={this.state.criteria}>
+				    <For each="criterion" index="index" of={this.props.criteria}>
 					<CriterionCheckbox 
 					    key={index}
 					    criterion={criterion} 
@@ -114,7 +125,7 @@ class LandingRating extends Component {
 				    </For>
 				</div>
 				<div className="rates-block-main-filter-btm">
-				    <a href="#" className="tag2 tag2-last">Другие критерии</a>
+				    <div onClick={this.props.openCriteriaBasket} className="tag2 tag2-last">Другие критерии</div>
 				</div>
 			    </div>
 			    <div className="rates-block-main-products">
@@ -125,7 +136,8 @@ class LandingRating extends Component {
 					<div key={index} className="swiper-slide">
 					    <div className="rates-block-item">
 						<a href="#" className="rates-block-item-img">
-						    <img src="/img/phone@2x.png" alt=""/>
+						    <img src={helpers.imgUrl(object.main_image_hash, "auto-400")} alt=""/>
+						    
 						    <span className="rates-item-rate">
 							<span className="rates-item-rate-top">{object.n + 1}</span>
 							<span className="rates-item-rate-btm">{(object.score * 5).toFixed(1)}</span>

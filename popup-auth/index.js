@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Popup from 'components/popup';
-if (typeof window !== 'undefined') require('./popup-auth.scss');
+import './popup-auth.scss';
 
 
 const PopupAuth = () => {
