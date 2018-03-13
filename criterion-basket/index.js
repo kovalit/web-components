@@ -20,13 +20,14 @@ class CriterionBasket extends Component {
 
     render() {
 
-    
+	
 	return [
 
 	    <div key="1"  className="criterion-basket">
 		<div className="criterion-group">
 
 		</div>
+	
 		<For each="criterion" index="index" of={this.props.criteria}>
 		    <CriterionCkeckbox 
 			size={32}

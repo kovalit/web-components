@@ -18,32 +18,28 @@ class CriterionCheckbox extends Component {
 	    clickable: this.props.clickable || true,
 	    color : helpers.color(index),
 	};
-	this.onClick = this.onClick.bind(this);
+	//this.onClick = this.onClick.bind(this);
     }
 
 
-    onClick() {
-	let active = this.state.active;
-	this.setState({
-	    active: !active
-	});
-	
-	this.props.onClick(this.props.criterion, active);
-    }
+//    onClick() {
+//	let active = this.props.active;	
+//	this.props.onClick(this.props.criterion, active);
+//    }
     
     render() {
 	
 	let style = {};
 	let classNames = ["criterion", "criterion" + this.size];
 	
-	if (this.state.active) {
+	if (this.props.active) {
 	    style.backgroundColor = this.state.color;
 	    classNames.push("selected");
 	}
 	
 	return (
 	    <div className={classNames.join(" ")} 
-		onClick={this.onClick}
+		onClick={this.props.onClick}
 		style={style} >
 		{this.props.criterion.label}
 	    </div>
