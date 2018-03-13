@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom';
 import PopupAuth from 'components/popup-auth';
 
 
-const Header = () => {
-
-    const onLogin = () => {	
-	ReactDOM.render(<PopupAuth />, document.getElementById('popup-container'));
-    };
+const Header = (props) => {
 
     return (
 	<header>
@@ -28,7 +24,7 @@ const Header = () => {
 			    </ul>
 			</nav>
 		    </div>
-		    <a onClick={onLogin} href="#" className="btn white-btn">Вход</a>
+		    <a onClick={props.openLogin} href="#" className="btn white-btn">Вход</a>
 		</div>
 	    </div>
 	</header>

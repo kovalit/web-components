@@ -5,7 +5,7 @@ import './popup-auth.scss';
 
 const PopupAuth = () => {
     return (
-	<Popup name="auth">
+	<div>
 	    <div className="close icons_close-round"></div>
 	    <div className="auth-header">
 		<div className="auth-header__logo"></div>
@@ -20,7 +20,7 @@ const PopupAuth = () => {
 		<a className="auth auth-socials-btn auth-socials-btn_vk">Продолжить с ВКонтакте</a>
 		<a className="auth auth-socials-btn auth-socials-btn_ok">Продолжить с Одноклассниками</a>
 	    </div>
-	</Popup>
+	</div>
     );
 };
 

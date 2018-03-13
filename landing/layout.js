@@ -9,7 +9,7 @@ const Layout = props => {
 
     return (
 	<div className="wrapper">
-	    <Header />
+	    <Header openLogin={props.openLogin} />
 	    
 	    <div className="first-screen">
 		<div className="container">

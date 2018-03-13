@@ -18,11 +18,9 @@ class Popup extends Component {
 
     render() {	
 	if (!this.props.visible) {
-	    document.body.style.overflow = "inherit";
 	    return null;
 	}
-	
-	document.body.style.overflow = "hidden";
+
 	const classNames = [];
 	const name = ("name" in this.props) ? this.props.name : "default";
 
