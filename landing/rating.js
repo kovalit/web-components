@@ -18,66 +18,23 @@ class LandingRating extends Component {
 	
 	this.state = {
 	    isClient: typeof window != 'undefined' && window.document,
-	    criteria: [],
 	    objects: [],
 	    selectedCriteria: [],
 	};
 	
-	this.onCriteriaClick = this.onCriteriaClick.bind(this);
-	//this.openCriteriaBasket = this.openCriteriaBasket.bind(this);
     }
-    
-    
-    componentDidMount() {
-	fetch('http://whatsbetter.me/api/spheres/pda/criteria?limit=8')
-	    .then(res => res.json())
-	    .then(body => {
-		
-		let criteria = [];
-		let index = 0;
-		for (let criterion of body.data) {
-		    criterion.active = index < 4;
-		    criteria.push(criterion);
-		    index++;
-		}
-		this.setState({
-		    criteria: criteria,
-		});
-		
-		let list = criteria.filter(item => item.active).map(item=>item.id).join(",");
-		return fetch('http://whatsbetter.me/api/spheres/pda/objects?limit=3&criteria=' + list)
-	    })
-	    .then(res => res.json())
-	    .then(body => {
-		this.setState({
-		    objects: body.data
-		});
-	    });
-    }
-    
 
-    
-    onCriteriaClick(criterion, active){
-	let criteria = this.state.criteria.slice();
-	for (let item of criteria) {
-	    if (item.id === criterion.id) {
-		item.active = !item.active;
-	    }
-	    
-	}
-	
-	this.setState({
-	     criteria: criteria,
-	});
-	
-	let list = criteria.filter(item => item.active).map(item=>item.id).join(",");
-	fetch('http://whatsbetter.me/api/spheres/pda/objects?limit=3&criteria=' + list)
-	    .then(res => res.json())
-	    .then(body => {
-		this.setState({
-		    objects: body.data
+    componentWillReceiveProps(props){
+	let list = props.criteria.filter(item => item.active).map(item=>item.id).join(",");
+	if (list !== "") {
+	    fetch('http://whatsbetter.me/api/spheres/pda/objects?limit=3&criteria=' + list)
+		.then(res => res.json())
+		.then(body => {
+		    this.setState({
+			objects: body.data
+		    });
 		});
-	    });
+	}
     }
     
     
@@ -118,8 +75,9 @@ class LandingRating extends Component {
 				    <For each="criterion" index="index" of={this.props.criteria}>
 					<CriterionCheckbox 
 					    key={index}
+					    color={criterion.color}
 					    criterion={criterion} 
-					    onClick={this.onCriteriaClick}
+					    onClick={()=>this.props.onCriterionClick(criterion.id)}
 					    active={criterion.active} 
 					    size={32} />
 				    </For>

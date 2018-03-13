@@ -25,8 +25,8 @@ class Filters extends Component {
 		<div className="close icons_close js-filters-close close-hide"></div>
 		<div className="filters">
 
-		    <For each="property" index="key" of={filters.price}>
-			<div key={key} className="filters_group range_filter" data-name={property.name} data-id={property.id} >
+		    <For each="property" index="index" of={filters.price}>
+			<div key={index} className="filters_group range_filter" data-name={property.name} data-id={property.id} >
 			    <p>{ property.label }</p>
 			    <input id="to" readOnly type="text" />
 			    <input id="from" readOnly type="text" />

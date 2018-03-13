@@ -7,27 +7,22 @@ class Popup extends Component {
     
     constructor(props) {
 	super(props);
-	
-	this.state = {
-	    show: this.props.show || true
-	};
-	document.body.style.overflow = "hidden";
-	
-	this.close = this.close.bind(this);
+
 	this.innerClick = this.innerClick.bind(this);
     }
     
-    close() {
-	document.body.style.overflow = "inherit";
-	let el = ReactDOM.findDOMNode(this).parentNode;
-	ReactDOM.unmountComponentAtNode(el);
-    }
     
     innerClick(e) {
 	e.stopPropagation();
     }
 
-    render() {
+    render() {	
+	if (!this.props.visible) {
+	    document.body.style.overflow = "inherit";
+	    return null;
+	}
+	
+	document.body.style.overflow = "hidden";
 	const classNames = [];
 	const name = ("name" in this.props) ? this.props.name : "default";
 
@@ -35,9 +30,9 @@ class Popup extends Component {
 	classNames.push('popup-' + name);
 
 	return (
-	    <div ref="popup" className={classNames.join(' ')} onMouseUp={this.close}>	
+	    <div className={classNames.join(' ')} onMouseUp={()=>this.props.close(this.props.name)}>	
 		<div onMouseUp={this.innerClick} className="popup-window inner-scroll">
-		    <div onClick={this.close} className="popup-close"></div>
+		    <div onClick={()=>this.props.close(this.props.name)} className="popup-close"></div>
 		    {this.props.children}
 		</div>
 	    </div>

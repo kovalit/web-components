@@ -32,6 +32,7 @@ class CriterionBasket extends Component {
 		    <CriterionCkeckbox 
 			size={32}
 			key={index} 
+			color={criterion.color}
 			active={criterion.active}
 			onClick={()=>this.props.onClick(criterion.id)}
 			criterion={criterion} />
