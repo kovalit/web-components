@@ -45,7 +45,7 @@ const Layout = props => {
 			<div className="swiper-container news-slider">
 			    <div className="swiper-wrapper">
 				<For each="post"index="index" of={props.posts}>
-				    <Post key={index} post={post} />
+				    <Post key={index} post={post} onClick={props.openPost} />
 				</For>
 
 

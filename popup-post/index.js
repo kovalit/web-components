@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Popup from 'components/popup';
 import './popup-post.scss';
 
+
 class PopupPost extends Component {
     
     constructor(props) {
@@ -27,25 +28,23 @@ class PopupPost extends Component {
     
     render() {
 	return (
-	    <Popup name="post">
-		<div className="article">
+	    <div className="article">
 
-		    <div className="article-container">
-			<div className="article-top clearfix">
-			    <a href="#" className="article-logo">
-				<img src="/img/logo@2x.png" alt=""/>
-			    </a>
-			    <a href="#" className="grey-btn btn">Все статьи</a>
-			</div>
-			<div className="article-txt">
-			    <h2>{this.state.title}</h2>
-			    {this.state.content}
-			</div>
+		<div className="article-container">
+		    <div className="article-top clearfix">
+			<a href="#" className="article-logo">
+			    <img src="/img/logo@2x.png" alt=""/>
+			</a>
+			<a href="#" className="grey-btn btn">Все статьи</a>
 		    </div>
-
-		    <a href="#" className="all-link btn">Все посты</a>
+		    <div className="article-txt">
+			<h2>{this.state.title}</h2>
+			{this.state.content}
+		    </div>
 		</div>
-	    </Popup>
+
+		<a href="#" className="all-link btn">Все посты</a>
+	    </div>
 	);
     }
 };

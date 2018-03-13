@@ -3,15 +3,10 @@ import ReactDOM from 'react-dom';
 
 import PopupPost from 'components/popup-post';
 
-const Post = ({post}) => {
-    
-    const onClick = () => {	
-	ReactDOM.render(<PopupPost alias={post.alias} />, document.getElementById('popup-container'));
-    };
-    
+const Post = ({post, onClick}) => {
     return (
-	<div onClick={onClick} className="swiper-slide">
-	    <div onClick={onClick.bind(null, post.alias)}  className="news-slider-item">
+	<div onClick={onClick.bind(null, post.alias)} className="swiper-slide">
+	    <div className="news-slider-item">
 		<span className="news-slider-img">
 		    <If condition={post.preamble_images.length === 1}>
 		    
