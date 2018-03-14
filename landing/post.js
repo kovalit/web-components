@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-import PopupPost from 'components/popup-post';
+import helpers from 'helpers';
 
 const Post = ({post, onClick}) => {
     return (
@@ -27,7 +25,7 @@ const Post = ({post, onClick}) => {
 		</span>
 		<span className="news-slider-title">{post.title}</span>
 		<p>{post.preamble}</p>
-		<span className="news-slider-date">3 февраля</span>
+		<span className="news-slider-date">{helpers.dateFormat(post.created_at, false)}</span>
 	    </div>
 	</div>
     );
