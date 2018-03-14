@@ -39,7 +39,7 @@ class PopupPost extends Component {
 		    </div>
 		    <div className="article-txt">
 			<h2>{this.state.title}</h2>
-			<div dangerouslySetInnerHTML={this.state.content} />
+			<div dangerouslySetInnerHTML={{__html: this.state.content}} />
 		    </div>
 		</div>
 
