@@ -1,0 +1,24 @@
+.avatar {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    display: inline-block;
+}
+.avatar48 {
+    @extend .avatar;
+    width: 48px;
+    height: 48px;
+}
+
+.avatar32 {
+    @extend .avatar;
+    width: 32px;
+    height: 32px;
+}
+
+.avatar24 {
+    @extend .avatar;
+    width: 24px;
+    height: 24px;
+}

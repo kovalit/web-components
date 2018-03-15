@@ -1,5 +1,9 @@
 @import "styles/mixins/breakpoint";
 
+.comment {
+    padding: 8px 0;
+}
+
 .comment-header {
     display: table;
     width: 100%;

@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
+import helpers from 'helpers';
+import rand from 'random-seed';
+
 import Useful from 'components/useful';
+
 import './comment.scss';
+import './avatars.scss';
+import './score.scss';
+
 
 class Comment extends Component {
     
     constructor(props) {
 	super(props);
-	this.node = null;
+	
+	let gen = rand.create(this.props.criterion.id);
+	let index = gen(24);
 
 	this.state = {
 	    fullText: false,
-	    text: "Может быть это ощущение у меня от оригинального фильма, но в этом ремейке очень много сцен и локаций, из-за этого сложилось ощущение скомканости. Еще весь фильм ждёшь этого Харрисона Форда, а он как в фоллауте тусуется один в постапокалиптичном городе… Это было тупо. Под конец стало хорошо.",
+	    text: this.props.comment ? this.props.comment.text : "",
+	    color: helpers.color(index)
 	};
+	
+	
 
     }
     
@@ -21,7 +33,7 @@ class Comment extends Component {
 
     
     getPreamble(text){
-	let limit = 20;
+	let limit = 200;
 	
 	if (text.length <= limit || this.state.fullText) {
 	    return text;
@@ -49,34 +61,40 @@ class Comment extends Component {
     }
     
     render() {
+	
+	const {user, comment, useful} = this.props;
+	
 	return (
-	    <div className="comment" data-author="Vladislav Sozonov" data-id="@n59f2eda1d262b5000f50a20e">
+	    <div className="comment">
 		
 		<div className="comment-header">
 		    <div className="comment-avatar">
-			<div className="avatar32" style={{backgroundImage: 'url(https://picture.whatsbetter.me/picture/size/64-64?hash=bP5ou3q84ghMbIbaKOBIhqtUFFoEoI-6rEhMXJCue0z0UX9U6dfyBRLTC2imWxdeWICAxHI_7NPYnlQ-QkjaCu1Mq9OEOIjBM8Utdk5xvHUIPzW8-mC-GHZlO1_q_Je0C63UK5aHnoSD86unY2FeM8QbJnaHFxZCD68laXM5mVnsUlJ_-2RrNreLs11ZGnzN8z-D4hS6Ki4bUyutandSeA==)'}}></div>
+			<div className="avatar32" style={helpers.imgStyle(user.main_image_hash, "64-64")}></div>
 		    </div>
 
 		    <div className="comment-username">
-			<div className="username">Vladislav Sozonov</div>
-			<div className="userinfo">Карма: 160</div>
+			<div className="username">{user.label}</div>
+			<div className="userinfo">Карма: {helpers.carma(user)}</div>
 		    </div>
 		    <div className="comment-score">
-			<div className="score" style={{backgroundColor: 'rgb(230, 113, 89)'}}>3.5</div>
+			<div className="score" style={{backgroundColor: this.state.color}}>3.5</div>
 		    </div>
 		</div>
 		
-		<div className="comment-content">
-		    {this.getPreamble(this.state.text)}
-		</div>
-		
-		<div className="comment-date">27 октября 2017 года в 08:26</div>
-		
-		<div className="comment-footer">
-		    <div className="comment-button comment-reply">Ответить</div>
-		    <Useful />
-		    <div className="comment-sharing">Поделиться</div>
-		</div>
+		<If condition={comment}>
+			
+		    <div className="comment-content">
+			{this.getPreamble(this.state.text)}
+		    </div>
+
+		    <div className="comment-date">{helpers.dateFormat(comment.created)}</div>
+
+		    <div className="comment-footer">
+			<div className="comment-button comment-reply">Ответить</div>
+			<Useful {...useful} />
+			<div className="comment-sharing">Поделиться</div>
+		    </div>
+		</If>
 		
 	    </div>
 	);

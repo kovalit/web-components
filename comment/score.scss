@@ -1,0 +1,13 @@
+@import "styles/constant";
+
+.score {
+    font-family: LatoBold;
+    font-size: 14px;
+    width: 34px;
+    text-align: center;
+    height: $barHeigth;
+    line-height: $barHeigth;
+    color: #333333;
+    border-radius: 4px;
+    float: left;    
+}
