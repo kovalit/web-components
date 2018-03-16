@@ -57,15 +57,3 @@
     right: 4px;
     z-index: 1;
 }
-
-.inverse{
-    .criterion-bar__progress {
-        right: 0;
-        left: inherit;
-    }
-    
-    .criterion-bar__score {
-        right: inherit;
-        left: 4px;
-    }
-}

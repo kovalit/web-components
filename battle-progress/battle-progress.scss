@@ -1,0 +1,61 @@
+@import "styles/constant";
+@import "styles/mixins/text-overflow";
+@import "styles/mixins/image";
+
+.bar {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #e5e5e5;
+    margin-top: 8px;
+    position: relative;
+    height: 32px;
+}
+
+.bar__progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.bar__score {
+    font-size: 18px;
+    font-family: Latobold;
+    text-align: right;
+    color: #000000;
+    position: absolute;
+    right: 4px;
+    z-index: 1;
+    line-height: 32px;
+}
+
+.bar_left {
+    display: inline-block;
+    float: left;
+    width: 50%;
+    
+    .bar__progress {
+        right: 0;
+        left: inherit;
+        background-color: #E67159;
+    }
+    
+    .bar__score {
+        left: 4px;
+        right: inherit;
+    }
+}
+
+.bar_right{
+    display: inline-block;
+    float: left;
+    width: 50%; 
+    
+    .bar__progress {
+        background-color: #81b977;
+    }
+}
