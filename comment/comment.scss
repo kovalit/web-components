@@ -368,3 +368,25 @@
     }
 }
 
+.comment-object{
+    display: table;
+    padding: 8px 8px 8px 40px;
+}
+
+.comment-object__img {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    display: table-cell; 
+}
+
+.comment-object__label {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 16px;
+    
+}
+

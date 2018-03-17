@@ -5,8 +5,17 @@ import './battle-progress.scss';
 
 
 const BattleProgress = (props) => {
-    let left = props.left / (props.right + props.left) * 100
-    let right = 100 - left;
+    let left;
+    let right;
+    
+    if (props.right === 0 && props.left === 0 ) {
+	left = right = 50;
+    }
+    else {
+	left = props.left / (props.right + props.left) * 100;
+	right = 100 - left;
+    }
+    
 
     
     let styleLeft = {

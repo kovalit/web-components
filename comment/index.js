@@ -62,7 +62,7 @@ class Comment extends Component {
     
     render() {
 	
-	const {user, comment, useful} = this.props;
+	const {user, comment, useful, score} = this.props;
 	
 	return (
 	    <div className="comment">
@@ -76,10 +76,20 @@ class Comment extends Component {
 			<div className="username">{user.label}</div>
 			<div className="userinfo">Карма: {helpers.carma(user)}</div>
 		    </div>
-		    <div className="comment-score">
-			<div className="score" style={{backgroundColor: this.state.color}}>3.5</div>
-		    </div>
+		    
+		    <If condition={score}>
+			<div className="comment-score">
+			    <div className="score" style={{backgroundColor: this.state.color}}>{score}</div>
+			</div>
+		    </If>
 		</div>
+		
+		<If condition={this.props.object}>
+		    <div className="comment-object">
+			<div className="comment-object__img" style={helpers.imgStyle(this.props.object.main_image_hash, "64-64")}></div>
+			<div className="comment-object__label">{this.props.object.label}</div>
+		    </div>
+		</If>
 		
 		<If condition={comment}>
 			
