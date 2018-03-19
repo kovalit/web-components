@@ -4,6 +4,8 @@ import './popup-auth.scss';
 
 
 const PopupAuth = (props) => {
+
+    
     return (
 	<div>
 	    <div className="close icons_close-round"></div>
@@ -16,9 +18,9 @@ const PopupAuth = (props) => {
 		<div className="auth-content__subtitle">Узнай, что лучше для тебя по мнению <br />тех, кому ты доверяешь</div>
 	    </div>
 	    <div className="auth-socials">
-		<a onClick={()=>props.close(props.name)} className="auth auth-socials-btn auth-socials-btn_fb">Продолжить с Facebook</a>
-		<a onClick={()=>props.close(props.name)} className="auth auth-socials-btn auth-socials-btn_vk">Продолжить с ВКонтакте</a>
-		<a onClick={()=>props.close(props.name)} className="auth auth-socials-btn auth-socials-btn_ok">Продолжить с Одноклассниками</a>
+		<a onClick={props.onFB} className="auth auth-socials-btn auth-socials-btn_fb">Продолжить с Facebook</a>
+		<a onClick={props.onVK} className="auth auth-socials-btn auth-socials-btn_vk">Продолжить с ВКонтакте</a>
+		<a onClick={props.onOK} className="auth auth-socials-btn auth-socials-btn_ok">Продолжить с Одноклассниками</a>
 	    </div>
 	</div>
     );
