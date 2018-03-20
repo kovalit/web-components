@@ -12,8 +12,8 @@ const BattleProgress = (props) => {
 	left = right = 50;
     }
     else {
-	left = props.left / (props.right + props.left) * 100;
-	right = 100 - left;
+	left = (props.left / (props.right + props.left) * 100).toFixed(1);
+	right = (100 - left).toFixed(1);
     }
     
 
