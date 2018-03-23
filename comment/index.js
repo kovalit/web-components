@@ -21,16 +21,27 @@ class Comment extends Component {
 	    fullText: false,
 	    text: this.props.comment ? this.props.comment.text : "",
 	    color: helpers.color(index),
-	    isReply: false
+	    isReply: false,
+	    useful: this.props.useful
 	};
 	
 	this.onReply = this.onReply.bind(this);
 	this.onCloseReply = this.onCloseReply.bind(this);
+	this.changeUseful = this.changeUseful.bind(this);
 	
     }
     
     componentWillUnmount() {
 	
+    }
+    
+    changeUseful(type) {
+	let useful = this.state.useful;
+	useful[type] = ++this.state.useful[type];
+	
+	this.setState({
+	    useful: useful
+	});
     }
 
     
@@ -78,7 +89,7 @@ class Comment extends Component {
     
     render() {
 	
-	const {user, comment, useful, score} = this.props;
+	const {user, comment, score} = this.props;
 	
 	return (
 	    <div className="comment">
@@ -117,7 +128,7 @@ class Comment extends Component {
 
 		    <div className="comment-footer">
 			<div className="comment-button comment-reply" onClick={this.onReply}>Ответить</div>
-			<Useful {...useful} />
+			<Useful {...this.state.useful} onClick={this.changeUseful} />
 			<div className="comment-sharing">Поделиться</div>
 		    </div>
 		</If>
