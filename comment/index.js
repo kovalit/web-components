@@ -20,11 +20,13 @@ class Comment extends Component {
 	this.state = {
 	    fullText: false,
 	    text: this.props.comment ? this.props.comment.text : "",
-	    color: helpers.color(index)
+	    color: helpers.color(index),
+	    isReply: false
 	};
 	
+	this.onReply = this.onReply.bind(this);
+	this.onCloseReply = this.onCloseReply.bind(this);
 	
-
     }
     
     componentWillUnmount() {
@@ -59,6 +61,20 @@ class Comment extends Component {
 		<span key="4" style={{display: "none"}}>{hiddenText}</span>
 	];
     }
+    
+    onReply() {
+	this.setState({
+	    isReply: true 
+	});
+    }
+    
+    onCloseReply(){
+	this.setState({
+	    isReply: false 
+	});
+    }
+    
+
     
     render() {
 	
@@ -100,12 +116,12 @@ class Comment extends Component {
 		    <div className="comment-date">{helpers.dateFormat(comment.created)}</div>
 
 		    <div className="comment-footer">
-			<div className="comment-button comment-reply">Ответить</div>
+			<div className="comment-button comment-reply" onClick={this.onReply}>Ответить</div>
 			<Useful {...useful} />
 			<div className="comment-sharing">Поделиться</div>
 		    </div>
 		</If>
-		
+		{this.props.renderReply(this.state.isReply, this.props.index, this.onCloseReply)}
 	    </div>
 	);
     }
