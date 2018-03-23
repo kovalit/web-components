@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import helpers from 'helpers';
 import './battle-opinion.scss';
-import ContentEditable from 'components/content-editable';
-
+import helpers from 'helpers';
 
 
 class BattleOpinion extends Component {
@@ -27,7 +25,6 @@ class BattleOpinion extends Component {
 			<div className="object-select" style={helpers.imgStyle(object.main_image_hash, "128-128")}></div>
 		    </div>
 		    <div className="opinion__text">
-			{this.props.html}
 			<div
 			    ref={(elem) => {this.elem = elem}}
 			    className="opinion__textarea" 
