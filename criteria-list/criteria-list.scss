@@ -1,0 +1,68 @@
+@import "styles/constant";
+@import "styles/mixins/breakpoint";
+
+.criteria-popup{
+    background-color: #fff;
+    border: 2px solid #eee;
+    position: absolute;
+    display: none;
+    z-index: 101;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    top: $headerHeight + 56;
+    margin: 0 $sidebarWidth;
+        
+    @include breakpoint(portrait-tablet) {
+        top: $headerHeight;
+    }
+    
+    &.visible {
+        display: block;
+    }
+    
+    &.hidden {
+        display: none;
+    }   
+    
+    .criterion {
+        height: 32px;
+        line-height: 32px;
+        font-size: 15px;
+        background-size: 16px 16px;
+        background-position: 8px 9px;
+        padding: 0 10px 0 32px;
+        margin: 8px 8px 0 0;
+        
+        &:hover{
+            background-image: url("/v3n/img/checked@2x.png"); 
+        }
+    
+        &.selected:hover{
+            background-image: url("/v3n/img/remove@2x.png");
+            background-color: #D5D5D5 !important;
+        }
+    }
+}
+
+.criteria-content{
+    max-height: 472px;
+    overflow-y: auto;
+    min-height: 160px;
+}
+
+.criterion-list {
+    text-align: left;
+    padding: 16px 16px 16px 16px;
+    
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+.criterion-list__header {
+    font-size: 14px;
+    font-family: LatoRegular;
+    color: #9B9B9B;
+}

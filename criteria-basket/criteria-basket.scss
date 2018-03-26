@@ -1,0 +1,80 @@
+@import "styles/constant";
+@import "styles/mixins/breakpoint";
+
+.criteria-basket {
+    background: #fff;
+    overflow: hidden;
+    height: 34px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: inline-block;
+    float: left;
+    line-height: 34px;
+    cursor: pointer;
+    padding-left: 8px;;
+    
+    &.active,
+    &:hover {
+        background: #eee;
+    }
+    
+    @include breakpoint(portrait-tablet) {
+        margin: 0px 4px; 
+    }
+}
+
+.criteria-basket-main {
+    float: left;
+    display: inline-block;
+    
+    .criterion_short {
+        padding: 0 0px 0 24px;
+        text-indent: -999px;
+        overflow: hidden;
+        white-space: nowrap;
+    }   
+}
+
+.criteria-basket-title {
+    font-family: LatoRegular;
+    font-size: 14px;
+    line-height: 32px;
+    color: #000;
+    display: inline-block;
+    float: left;
+    padding-right: 8px;
+    display: none; 
+    
+    @include breakpoint(portrait-tablet) {
+        display: block;  
+    }
+}
+
+.criteria-select {
+    float: left;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    color: #4A4A4A;
+    background-image: url("/v3n/img/icons/down-arrow.png");
+    background-repeat: no-repeat;
+    background-size: 13px 8px;
+    background-position: center center;
+    border-radius: 4px;
+    margin: 4px 8px 0 0;
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    
+    
+    
+/*    &:hover {
+        background-color: #E5E5E5; 
+        color: #000;
+    }*/
+    
+}
+
+.active .criteria-select {
+    background-image: url("/v3n/img/icons/up-arrow.png");
+}

@@ -17,7 +17,6 @@ class CriterionCheckbox extends Component {
 	this.state = {
 	    active: this.props.active || false,
 	    clickable: this.props.clickable || true,
-	    color : helpers.color(index),
 	};
 	//this.onClick = this.onClick.bind(this);
     }

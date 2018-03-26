@@ -1,0 +1,77 @@
+@import "styles/constant";
+@import "styles/mixins/breakpoint";
+@import "styles/mixins/image";
+
+.header-sphere {
+    float: left;
+    text-align: left;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    height: 42px;
+    width: calc(100% - 92px);
+    padding: 6px 40px 6px 8px;
+    margin: 0 4px;
+    position: relative;
+    
+    @include breakpoint(portrait-tablet) {
+        //padding: 0;
+        margin: 0;
+        width: initial;
+    }
+}
+
+.sphere-share {
+    display: inline-block;
+    border: 1px solid #eee;
+    height: 24px;
+    width: 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    @include background-image("icons/share.svg");
+    background-repeat: no-repeat;
+    background-size: 14px 16px;
+    background-position: center center;
+    right: 8px;
+    top: calc(50% - 12px);
+    position: absolute;
+}
+
+.header-sphere__title {
+    font-family: LatoBold;
+    font-size: 16px;
+    color: #000;
+    line-height: 14px;
+    
+    @include breakpoint(portrait-tablet) {
+        line-height: 16px;
+    }
+}
+
+.header-sphere__title span {
+    display: none;
+    
+    @include breakpoint(portrait-tablet) {
+        display: inline-block;
+    } 
+}
+
+.header-sphere__stat {
+    font-family: LatoRegular;
+    font-size: 12px;
+    color: #9B9B9B;
+    padding-top: 2px;
+    
+    span {
+        padding: 0 4px;
+        float: left;
+        line-height: 12px;
+    }
+}
+
+.elcount b {
+    display: none;
+    
+    @include breakpoint(portrait-tablet) {
+        display: inline-block;
+    }  
+}
