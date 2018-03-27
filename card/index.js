@@ -12,6 +12,7 @@ import './card.scss';
 
 const Card = ({number, object, criteria}) => {
     //let avg_scores = object.avgScores;
+    console.log("card", criteria)
     return (
 	<div className="card">
 	  
@@ -29,6 +30,7 @@ const Card = ({number, object, criteria}) => {
 	    </div>
 	    <div className="card-right">
 		<For each="item" index="index" of={object.avg_scores }>
+		    {console.log("avg_scores", item)}
 		    <CriterionSlider 
 			editable={false}
 			scalegrid={index === 0}

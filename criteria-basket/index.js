@@ -13,7 +13,11 @@ const CriteriaBasket = (props) => {
 	    <div className="criteria-basket-title">Критерии:</div>
 	    <div className="criteria-basket-main">
 		<For each="criterion" index="index" of={ props.criteria }>
-		    <CriterionCheckbox color={criterion.color} active={true} criterion={criterion} />
+		    <CriterionCheckbox 
+			key={index} 
+			color={criterion.color} 
+			active={true} 
+			criterion={criterion} />
 		</For>
 	    </div>
 	    <div className="criteria-select"></div>
