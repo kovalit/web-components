@@ -1,5 +1,6 @@
 @import "styles/constant";
 @import "styles/mixins/breakpoint";
+@import "styles/mixins/image";
 
 .criteria-basket {
     background: #fff;
@@ -56,7 +57,7 @@
     width: 24px;
     line-height: 24px;
     color: #4A4A4A;
-    background-image: url("/v3n/img/icons/down-arrow.png");
+    @include background-image("icons/arrow-down.png");
     background-repeat: no-repeat;
     background-size: 13px 8px;
     background-position: center center;

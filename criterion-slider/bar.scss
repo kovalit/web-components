@@ -21,7 +21,7 @@
         color: #333333;
     }
 
-    .bar_item::after {
+    .bar_scale::after {
         position: absolute;
         width: 16px;
         height: 16px;
@@ -46,10 +46,10 @@
     }
 
     .end-label {
-        right: 0;
+        right: 10px;
     }
 
     .end-label::after {
-        right: 0;
+        right: -10px;
     }
 }

@@ -1,36 +1,43 @@
 import React from 'react';
 import CardNumber from 'components/card-number';
 import CriterionSlider from 'components/criterion-slider';
+import CriterionBar from 'components/criterion-bar';
 import CriterionCheckbox from 'components/criterion-checkbox';
-import CriterionBasket from 'components/criterion-basket';
+
 import Comment from 'components/comment';
 import CommentEditor from 'components/comment-editor';
 import UserItem from 'components/user-item';
 
 import './card.scss';
 
-const Card = props => {
-return (
+const Card = ({number, object, criteria}) => {
+    //let avg_scores = object.avgScores;
+    return (
 	<div className="card">
 	  
-	    <CardNumber score="4.0" number="1" />
+	    <CardNumber score={object.avg} number={number} />
 	    <div className="card-header">
-		<div className="card-header__title">Бегущий по лезвию 2049</div>
+		<div className="card-header__title">{object.label}</div>
 		<div className="card-header__opinions">
-		    <div className="opinions__count">32 016 мнений</div>
+		    <div className="opinions__count">- мнений</div>
 		</div>
 	    </div>
 	    <div className="card-left">
 		<div className="card-image">
-		    <img src="https://picture.whatsbetter.me/picture/size/302-auto?hash=B_KbSWjOsfYbZljRIXC_S9oROjHQ9D6Ht_T01naIN2bnyHW223J1ow==" />
+		    <img src="" />
 		</div>
 	    </div>
 	    <div className="card-right">
-		
-		<CriterionSlider isEditable={true} defaultValue={-0.5} />
-		<CommentEditor score={0.5}/>
-		<Comment />
-		<UserItem />
+		<For each="item" index="index" of={object.avg_scores }>
+		    <CriterionSlider 
+			editable={false}
+			scalegrid={index === 0}
+			key={index} 
+			criterion={criteria[item.criteria_id]} 
+			defaultValue={item.value} 
+			color={criteria[item.criteria_id].color} />
+		</For>
+
 	    </div>	    
 	</div>
     );

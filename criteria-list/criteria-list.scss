@@ -11,6 +11,7 @@
     overflow: hidden;
     top: $headerHeight + 56;
     margin: 0 $sidebarWidth;
+    width: calc(100% - 400px);
         
     @include breakpoint(portrait-tablet) {
         top: $headerHeight;

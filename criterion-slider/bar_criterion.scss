@@ -34,7 +34,7 @@
         @include  text-overflow;
     }
 
-    .start-label::after {
+    .bar_scale.start-label::after {
         content: "-5.0"
     }
 
@@ -48,12 +48,12 @@
           margin-left: -4px;
     }
 
-    .center::after {
+    .bar_scale.center::after {
         content: "0";
         left: -4px;
     }
 
-    .end-label::after {
+    .bar_scale.end-label::after {
         right: -10px;
         content: "5.0";
     }

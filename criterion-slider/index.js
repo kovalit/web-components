@@ -27,9 +27,6 @@ class CriterionSlider extends Component {
     
     getStylesClass() {
 	let names = ["bar", "bar_criterion"];
-	if (this.props.isEditable) {
-	    names.push("bar_editable");
-	}
 	return names.join(" ");
     }
     
@@ -93,16 +90,25 @@ class CriterionSlider extends Component {
     
     
     render() {
+	let ev = {};
+	if (this.props.editable){
+	    ev.onMouseDown = this.handleMouseDown.bind(this);
+	}
+	let {criterion, color, scalegrid} = this.props;
+	
 	return (
 	    <div 
-		 ref={this.ref}
-		    className={this.getStylesClass()} 
-		    onMouseDown={this.handleMouseDown.bind(this)} >
-		<div className="value" style={{width: this.state.progress + "%" , backgroundColor: "rgb(230, 113, 89)"}}></div>
+		{...ev}
+		ref={this.ref}
+		className={this.getStylesClass()}  >
+		
+		<div className="value" style={{width: this.state.progress + "%" , backgroundColor: color}}></div>
 		<div className="slider" style={{left: this.state.progress + "%" }}></div>
-		<span className="bar_item start-label">Надежность</span>
-		<span className="bar_item center"></span>
-		<span className="bar_item end-label">{(this.state.value * 5).toFixed(1)}</span>
+		<span className={`bar_item ${scalegrid ? "bar_scale" : ""} start-label`}>{criterion.label}</span>
+		<span className={`bar_item ${scalegrid ? "bar_scale" : ""} center`}></span>
+		<span className={`bar_item ${scalegrid ? "bar_scale" : ""} end-label`}>
+		    {(this.state.value * 5).toFixed(1)}
+		</span>
 	    </div>
 	);
     }
