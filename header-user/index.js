@@ -10,7 +10,7 @@ const HeaderUser = ({user}) => {
 	    </div>
 	    <div className="table-cell">
 		<div className="header-username">{user.name}</div>
-		<div className="header-usercarma">Карма: 95</div>
+		<div className="header-usercarma">Карма: 0</div>
 	    </div>
 	</div>
     );

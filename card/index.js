@@ -12,6 +12,16 @@ import './card.scss';
 
 const Card = ({number, object, criteria}) => {
     //let avg_scores = object.avgScores;
+    
+    const onClick = (id, id2) => {
+	console.log(id, id2)
+    }
+    
+    let avg_scores = object.avg_scores.sort(function(a,b) {
+	return a.criteria_id - b.criteria_id;
+    });
+    
+    
 
     return (
 	<div className="card">
@@ -29,15 +39,16 @@ const Card = ({number, object, criteria}) => {
 		</div>
 	    </div>
 	    <div className="card-right">
-		<For each="item" index="index" of={object.avg_scores }>
+		<For each="item" index="index" of={avg_scores }>
 	
-		    <CriterionSlider 
-			editable={false}
-			scalegrid={index === 0}
-			key={index} 
-			criterion={criteria[item.criteria_id]} 
-			defaultValue={item.value} 
-			color={criteria[item.criteria_id].color} />
+		    <div key={index}  onClick={()=>onClick(item.criteria_id, object.id)}>
+			<CriterionSlider 
+			    editable={false}
+			    scalegrid={index === 0}
+			    criterion={criteria[item.criteria_id]} 
+			    defaultValue={item.value} 
+			    color={criteria[item.criteria_id].color} />
+		    </div>
 		</For>
 
 	    </div>	    

@@ -1,5 +1,6 @@
 @import "styles/constant";
 @import "styles/mixins/breakpoint";
+@import "styles/mixins/image";
 
 .criteria-popup{
     background-color: #fff;
@@ -35,11 +36,11 @@
         margin: 8px 8px 0 0;
         
         &:hover{
-            background-image: url("/v3n/img/checked@2x.png"); 
+            @include background-image("criteria/checked@2x.png"); 
         }
     
         &.selected:hover{
-            background-image: url("/v3n/img/remove@2x.png");
+            @include background-image("criteria/remove@2x.png"); 
             background-color: #D5D5D5 !important;
         }
     }
