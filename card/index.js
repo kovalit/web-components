@@ -1,12 +1,10 @@
 import React from 'react';
 import CardNumber from 'components/card-number';
 import CriterionSlider from 'components/criterion-slider';
-import CriterionBar from 'components/criterion-bar';
-import CriterionCheckbox from 'components/criterion-checkbox';
 
 import Comment from 'components/comment';
 import CommentEditor from 'components/comment-editor';
-import UserItem from 'components/user-item';
+
 
 import './card.scss';
 
@@ -17,6 +15,9 @@ const Card = (props) => {
     let avg_scores = object.avg_scores.sort(function(a,b) {
 	return a.criteria_id - b.criteria_id;
     });
+    
+    let current_user_scores = object.current_user_scores.reduce((item, cur)=> {item[cur.criteria_id] = cur; return item;}, {});
+
 
     return (
 	<div className="card">
@@ -43,13 +44,24 @@ const Card = (props) => {
 			    criterion={criteria[item.criteria_id]} 
 			    defaultValue={item.value} 
 			    color={criteria[item.criteria_id].color} />
-
-			<If condition={item.isOpen}>
-			    <div>sdsds</div>
-			</If>
-			
-			
 		    </div>
+		    
+		    <If condition={item.isOpen}>
+			<div>sdsds1</div>
+			<div>sdsds2</div>
+			<div>sdsds3</div>
+			<div>sdsds4</div>
+
+			<CommentEditor 
+			    object_id={object.id}
+			    criterion={criteria[item.criteria_id]} 
+			    color={criteria[item.criteria_id].color}
+			    user={props.me}
+			    score={item.criteria_id in current_user_scores ?  current_user_scores[item.criteria_id].value : null} />
+		    </If>
+			
+			
+		    
 		</For>
 
 	    </div>	    

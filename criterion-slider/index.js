@@ -77,10 +77,14 @@ class CriterionSlider extends Component {
 	
 	let progress = x / this.state.pos.width * 100;
 	let value = (2 * x - this.state.pos.width) / this.state.pos.width;
+	value = value.toFixed(2);
+	
 	this.setState({
 	    progress: progress,
 	    value: value
 	});
+	
+	this.props.onChange(value);
     }
 
     

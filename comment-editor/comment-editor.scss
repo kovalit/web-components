@@ -10,6 +10,13 @@
     z-index: 99;
     position: relative;
     
+    .score {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        cursor: pointer;
+    }
+    
 }
 
 .loading:after {
@@ -50,7 +57,6 @@
    
    .bar_criterion {
         margin: 0 8px 24px 8px;
-        display: none;
    }
 }
 
@@ -180,12 +186,7 @@ input[type=file]::-webkit-file-upload-button {
 
 .editor_oldscore {
     
-    .score {
-        position: absolute;
-        right: 4px;
-        top: 4px;
-        cursor: pointer;
-    }
+    
     
     .editor-criterion {
         display: none; 
