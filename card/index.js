@@ -10,18 +10,13 @@ import UserItem from 'components/user-item';
 
 import './card.scss';
 
-const Card = ({number, object, criteria}) => {
-    //let avg_scores = object.avgScores;
-    
-    const onClick = (id, id2) => {
-	console.log(id, id2)
-    }
+const Card = (props) => {
+    let {number, object, criteria} = props;
+
     
     let avg_scores = object.avg_scores.sort(function(a,b) {
 	return a.criteria_id - b.criteria_id;
     });
-    
-    
 
     return (
 	<div className="card">
@@ -41,13 +36,19 @@ const Card = ({number, object, criteria}) => {
 	    <div className="card-right">
 		<For each="item" index="index" of={avg_scores }>
 	
-		    <div key={index}  onClick={()=>onClick(item.criteria_id, object.id)}>
+		    <div key={index}  onClick={()=>props.openScore(object.id, item.criteria_id, )}>
 			<CriterionSlider 
 			    editable={false}
 			    scalegrid={index === 0}
 			    criterion={criteria[item.criteria_id]} 
 			    defaultValue={item.value} 
 			    color={criteria[item.criteria_id].color} />
+
+			<If condition={item.isOpen}>
+			    <div>sdsds</div>
+			</If>
+			
+			
 		    </div>
 		</For>
 
