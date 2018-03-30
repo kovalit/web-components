@@ -28,12 +28,15 @@ class CommentEditor extends Component {
 	let params = {
 	    text: this.textarea.innerText,
 	    value: this.state.value,
-	    criterion: this.props.criterion.id,
+	    criterion_id: this.props.criterion.id,
 	    object_id: this.props.object_id
-	}
+	};
 	
-	console.log(params);
-	//this.props.onSave(this.textarea.innerText); 
+	this.setState({
+	    value: null
+	});
+
+	this.props.onSave(params); 
 	this.textarea.innerText = "";
 	e.stopPropagation();
     }

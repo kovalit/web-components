@@ -15,9 +15,8 @@ const Card = (props) => {
     let avg_scores = object.avg_scores.sort(function(a,b) {
 	return a.criteria_id - b.criteria_id;
     });
-    
+  
     let current_user_scores = object.current_user_scores.reduce((item, cur)=> {item[cur.criteria_id] = cur; return item;}, {});
-
 
     return (
 	<div className="card">
@@ -37,31 +36,32 @@ const Card = (props) => {
 	    <div className="card-right">
 		<For each="item" index="index" of={avg_scores }>
 	
-		    <div key={index}  onClick={()=>props.openScore(object.id, item.criteria_id, )}>
+		    <div key={index}  onClick={()=>props.toggleScores(object.id, item.criteria_id, item.isOpen )}>
+			
 			<CriterionSlider 
 			    editable={false}
 			    scalegrid={index === 0}
 			    criterion={criteria[item.criteria_id]} 
 			    defaultValue={item.value} 
 			    color={criteria[item.criteria_id].color} />
+			    
+			    
 		    </div>
 		    
-		    <If condition={item.isOpen}>
-			<div>sdsds1</div>
-			<div>sdsds2</div>
-			<div>sdsds3</div>
-			<div>sdsds4</div>
+		    <If condition={item.isOpen}>			
+			<For each="score" index="num" of={item.scores }>
+			    <div key={num}>{score.value}</div>
+			</For>
 
 			<CommentEditor 
 			    object_id={object.id}
 			    criterion={criteria[item.criteria_id]} 
 			    color={criteria[item.criteria_id].color}
 			    user={props.me}
+			    onSave={(params)=>props.onScoreSave(params)}
 			    score={item.criteria_id in current_user_scores ?  current_user_scores[item.criteria_id].value : null} />
 		    </If>
-			
-			
-		    
+
 		</For>
 
 	    </div>	    
