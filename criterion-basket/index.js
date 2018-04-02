@@ -19,22 +19,11 @@ class CriterionBasket extends Component {
 
 
     }
-    
-    
-    componentDidMount() {
-//	var max = $(".mainbar .header").outerWidth() 
-//		- $(".mainbar .header-right").position().left 
-//		- $(".mainbar .header-right").outerWidth() 
-//		+ $("#criteria-basket").outerWidth();
-
-	console.log(document.getElementById("mainbar-header").clientWidth)
-    }
-    
+   
     
 
     render() {
 	
-	console.log("dd")
 	return [
 
 	    <div key="1"  className="criterion-basket">

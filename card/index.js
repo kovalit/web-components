@@ -58,7 +58,7 @@ const Card = (props) => {
 				user={score.user}
 				color={criteria[item.criteria_id].color} />
 			</For>
-
+			
 			<CommentEditor 
 			    object_id={object.id}
 			    criterion={criteria[item.criteria_id]} 

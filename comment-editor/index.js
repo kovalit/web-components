@@ -12,18 +12,24 @@ class CommentEditor extends Component {
 	this.state = {
 	    active: true,
 	    text: null,
-	    value: null,
+	    value: this.props.score ? this.props.score : 0,
+	    sliderValue: this.props.score ? this.props.score : 0,
+	    showSlider: this.props.score ? false : true,
 	};
 	
 	this.onFocus = this.onFocus.bind(this);
 	this.onBlur = this.onBlur.bind(this);
 	this.onSave = this.onSave.bind(this);
+	this.toggleSlider = this.toggleSlider.bind(this);
+	
     }
     
     componentDidMount() {
 	
     
     }
+    
+    
     onSave(e) {
 	let params = {
 	    text: this.textarea.innerText,
@@ -33,7 +39,8 @@ class CommentEditor extends Component {
 	};
 	
 	this.setState({
-	    value: null
+	    sliderValue: this.state.value,
+	    showSlider: false
 	});
 
 	this.props.onSave(params); 
@@ -55,6 +62,13 @@ class CommentEditor extends Component {
 //	})
     }
     
+    toggleSlider(){
+	this.setState({
+	    showSlider: !this.state.showSlider
+	});
+    }
+    
+    
     
     render() {
 	let classNames = ["editor"];
@@ -69,17 +83,20 @@ class CommentEditor extends Component {
 		<div className="editor-reply"></div>
 		<div className="editor-body">
 		    <div className="editor-criterion">
-			<CriterionSlider 
-			    onChange={(val)=>this.setState({value: val})}
-			    editable={true}
-			    scalegrid={false}
-			    criterion={this.props.criterion} 
-			    defaultValue={0} 
-			    color={this.props.color} />
+			<If condition={ this.state.showSlider }>
+			    <CriterionSlider 
+				onChange={(val)=>this.setState({value: val})}
+				editable={true}
+				scalegrid={false}
+				criterion={this.props.criterion} 
+				defaultValue={this.state.sliderValue} 
+				color={this.props.color} />
+			</If>
+
 		    </div>
-		    <If condition={ this.props.score }>
-			<div className="score" style={{backgroundColor: this.props.color}}>
-			    {(this.props.score * 5).toFixed(1)}
+		    <If condition={ !this.state.showSlider }>
+			<div onClick={this.toggleSlider} className="score" style={{backgroundColor: this.props.color}}>
+			    {(this.state.value * 5).toFixed(1)}
 			</div>
 		    </If>
 

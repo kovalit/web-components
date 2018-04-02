@@ -12,12 +12,19 @@ class CriterionSlider extends Component {
 	    //isEditable: false,
 	    pos: null,
 	    value: ("defaultValue" in this.props) ? this.props.defaultValue : 0,
-	    progress: ("defaultValue" in this.props) ? 50 * (1 + this.props.defaultValue)  : 0
+	    progress: this.getProgress()
 	};
 	this.ref = this.ref.bind(this);
 	this.handleMouseMove = this.handleMouseMove.bind(this);
-	this.handleMouseUp = this.handleMouseUp.bind(this);
-	
+	this.handleMouseUp = this.handleMouseUp.bind(this);	
+    }
+    
+    getProgress() {
+	let val = 0;
+	if  ("defaultValue" in this.props) {
+	    val = 50 * (1 + parseFloat(this.props.defaultValue))
+	}
+	return val;
     }
     
     componentWillUnmount() {
