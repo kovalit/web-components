@@ -10,9 +10,6 @@ class CriterionCheckbox extends Component {
 	super(props);
 	
 	this.size = this.props.size || 24;
-	let gen = rand.create(this.props.criterion.id);
-	let index = gen(24);
-
 	
 	this.state = {
 	    active: this.props.active || false,
@@ -30,11 +27,19 @@ class CriterionCheckbox extends Component {
     render() {
 	
 	let style = {};
+
 	let classNames = ["criterion", "criterion" + this.size];
 	
 	if (this.props.active) {
 	    style.backgroundColor = this.props.color;
 	    classNames.push("selected");
+	}
+	if (this.props.short) {
+	    classNames.push("criterion_short");
+	}
+	
+	if ("width" in this.props) {
+	    style.width = this.props.width;
 	}
 	
 	return (

@@ -27,14 +27,14 @@ class CriterionBasket extends Component {
 //		- $(".mainbar .header-right").outerWidth() 
 //		+ $("#criteria-basket").outerWidth();
 
-	//console.log(documetn mainbar-header)
+	console.log(document.getElementById("mainbar-header").clientWidth)
     }
     
     
 
     render() {
 	
-	
+	console.log("dd")
 	return [
 
 	    <div key="1"  className="criterion-basket">
