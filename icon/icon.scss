@@ -1,0 +1,75 @@
+@import "styles/constant";
+@import "styles/mixins/image";
+
+.icons_close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    background-image: url(/v3n/img/icons/close.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    opacity: .5;
+    
+    &:hover {
+        opacity: .4;
+    }
+}
+
+.icons_close-round {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    background-image: url(/v3n/img/icons/close-round.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    cursor: pointer;
+    
+    &:hover {
+        opacity: .7;
+    }
+}
+
+.icons_close_white{
+    opacity: 1;
+    background-image: url(/v3n/img/icons/close-white.svg);
+}
+
+.icons {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;  
+}
+
+.icons_apply {
+    width: 17.44px;
+    height: 13.12px;
+    margin-right: 8px;
+    float: left;
+    background-image: url(/v3n/img/icons/apply-gray.svg);
+}
+
+.icons_battle {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    float: left;
+    background-image: url(/v3n/img/icons/battle-gray.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.icons_objects-count {
+    width: 10px;
+    height: 12px;
+    @include background-image("icons/objects-count.svg")
+}
+.icons_users-count {
+    width: 10px;
+    height: 11px;
+    @include background-image("icons/users-count.svg")
+}
