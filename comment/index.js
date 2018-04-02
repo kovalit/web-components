@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import helpers from 'helpers';
-import rand from 'random-seed';
 
 import Useful from 'components/useful';
 
@@ -13,14 +12,10 @@ class Comment extends Component {
     
     constructor(props) {
 	super(props);
-	
-	let gen = rand.create(this.props.criterion.id);
-	let index = gen(24);
 
 	this.state = {
 	    fullText: false,
 	    text: this.props.comment ? this.props.comment.text : "",
-	    color: helpers.color(index),
 	    isReply: false,
 	    useful: this.props.useful
 	};
@@ -89,24 +84,26 @@ class Comment extends Component {
     
     render() {
 	
-	const {user, comment, score} = this.props;
+	const {user, comment, score, color} = this.props;
 	
 	return (
 	    <div className="comment">
 		
 		<div className="comment-header">
 		    <div className="comment-avatar">
-			<div className="avatar32" style={helpers.imgStyle(user.main_image_hash, "64-64")}></div>
+			<div className="avatar32" style={{backgroundImage: `url(${user.main_image})`}}></div>
 		    </div>
 
 		    <div className="comment-username">
-			<div className="username">{user.label}</div>
+			<div className="username">{user.name}</div>
 			<div className="userinfo">Карма: {helpers.carma(user)}</div>
 		    </div>
 		    
 		    <If condition={score}>
 			<div className="comment-score">
-			    <div className="score" style={{backgroundColor: this.state.color}}>{score}</div>
+			    <div className="score" style={{backgroundColor: color}}>
+				{(score * 5).toFixed(1)}
+			    </div>
 			</div>
 		    </If>
 		</div>
@@ -132,7 +129,7 @@ class Comment extends Component {
 			<div className="comment-sharing">Поделиться</div>
 		    </div>
 		</If>
-		{this.props.renderReply(this.state.isReply, this.props.index, this.onCloseReply)}
+
 	    </div>
 	);
     }

@@ -13,13 +13,27 @@ class CriterionBasket extends Component {
 	    criteriaGroups: [],
 	    selected: []
 	};
+	
+	this.shortWidth = 24;
+	this.offset = 8; 
 
+
+    }
+    
+    
+    componentDidMount() {
+//	var max = $(".mainbar .header").outerWidth() 
+//		- $(".mainbar .header-right").position().left 
+//		- $(".mainbar .header-right").outerWidth() 
+//		+ $("#criteria-basket").outerWidth();
+
+	//console.log(documetn mainbar-header)
     }
     
     
 
     render() {
-
+	
 	
 	return [
 

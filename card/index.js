@@ -48,9 +48,15 @@ const Card = (props) => {
 			    
 		    </div>
 		    
-		    <If condition={item.isOpen}>			
+		    <If condition={item.isOpen}>	
+		    
 			<For each="score" index="num" of={item.scores }>
-			    <div key={num}>{score.value}</div>
+			    <Comment 
+				key={num}
+				comment={score.comment}
+				score={score.value}
+				user={score.user}
+				color={criteria[item.criteria_id].color} />
 			</For>
 
 			<CommentEditor 
