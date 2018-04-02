@@ -1,0 +1,44 @@
+@import "styles/mixins/breakpoint";
+
+.card-settings {
+    float: right;
+    margin-top: 14px;
+    display: none;
+    
+    @include breakpoint(portrait-tablet) {
+        display: block;
+    }
+}
+
+.card-view{
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-left: 2px;
+    float: left;
+    cursor: pointer;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    &.active {
+        background-color: #E5E5E5;
+    }
+}
+
+.card-view_full{
+    border-radius: 2px 0 0 2px;
+  
+    background-image: url(/v3n/img/icons/full-view.svg);
+}
+
+.card-view_short{
+    border-radius:0;
+    background-image: url(/v3n/img/icons/short-view.svg);
+}
+
+.card-view_map{
+    border-radius: 0 2px 2px 0;
+    background-image: url(/v3n/img/icons/map-view.svg);
+    background-size: 14px 14px;
+}

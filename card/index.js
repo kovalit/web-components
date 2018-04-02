@@ -9,6 +9,7 @@ import CommentEditor from 'components/comment-editor';
 import './card.scss';
 
 const Card = (props) => {
+    
     let {number, object, criteria} = props;
 
     
