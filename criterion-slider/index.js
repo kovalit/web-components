@@ -32,8 +32,13 @@ class CriterionSlider extends Component {
 	this.removeDocumentMouseUpListener();
     }
     
+    
     getStylesClass() {
 	let names = ["bar", "bar_criterion"];
+	if (this.props.editable) {
+	    names.push("bar_editable");
+	}
+	
 	return names.join(" ");
     }
     
@@ -44,18 +49,22 @@ class CriterionSlider extends Component {
 	this.node.ownerDocument.addEventListener('mousemove', this.handleMouseMove);
     }
 
+
     addDocumentMouseUpListener() {
 	this.removeDocumentMouseUpListener();
 	this.node.ownerDocument.addEventListener('mouseup', this.handleMouseUp);
     }
 
+
     removeDocumentMouseMoveListener() {
 	this.node.ownerDocument.removeEventListener('mousemove', this.handleMouseMove);
     }
 
+
     removeDocumentMouseUpListener() {
 	this.node.ownerDocument.removeEventListener('mouseup', this.handleMouseUp);
     }
+
 
     handleMouseDown() {
 	this.setState({
@@ -105,6 +114,7 @@ class CriterionSlider extends Component {
 	if (this.props.editable){
 	    ev.onMouseDown = this.handleMouseDown.bind(this);
 	}
+	
 	let {criterion, color, scalegrid} = this.props;
 	
 	return (
