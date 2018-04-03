@@ -11,18 +11,21 @@ class CriterionSlider extends Component {
 	this.state = {
 	    //isEditable: false,
 	    pos: null,
-	    value: ("defaultValue" in this.props) ? this.props.defaultValue : 0,
+	    value: ("value" in this.props) ? this.props.value : 0,
 	    progress: this.getProgress()
 	};
 	this.ref = this.ref.bind(this);
+	
+	this.handleMouseDown = this.handleMouseDown.bind(this);
 	this.handleMouseMove = this.handleMouseMove.bind(this);
-	this.handleMouseUp = this.handleMouseUp.bind(this);	
+	this.handleMouseUp = this.handleMouseUp.bind(this);
+
     }
     
     getProgress() {
 	let val = 0;
-	if  ("defaultValue" in this.props) {
-	    val = 50 * (1 + parseFloat(this.props.defaultValue))
+	if  ("value" in this.props) {
+	    val = 50 * (1 + parseFloat(this.props.value))
 	}
 	return val;
     }
@@ -67,6 +70,10 @@ class CriterionSlider extends Component {
 
 
     handleMouseDown() {
+	if (!this.props.editable) {
+	    return;
+	}
+
 	this.setState({
 	    pos: this.node.getBoundingClientRect()
 	});
@@ -110,18 +117,12 @@ class CriterionSlider extends Component {
     
     
     render() {
-	let ev = {};
-	if (this.props.editable){
-	    ev.onMouseDown = this.handleMouseDown.bind(this);
-	}
-	
 	let {criterion, color, scalegrid} = this.props;
 	
 	return (
-	    <div 
-		{...ev}
-		ref={this.ref}
-		className={this.getStylesClass()}  >
+	    <div className={this.getStylesClass()}
+		onMouseDown={this.handleMouseDown}
+		ref={(node) => this.node = node}>
 		
 		<div className="value" style={{width: this.state.progress + "%" , backgroundColor: color}}></div>
 		<div className="slider" style={{left: this.state.progress + "%" }}></div>
@@ -133,7 +134,6 @@ class CriterionSlider extends Component {
 	    </div>
 	);
     }
-
 };
 
 export default CriterionSlider;

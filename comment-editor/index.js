@@ -89,7 +89,7 @@ class CommentEditor extends Component {
 				editable={true}
 				scalegrid={false}
 				criterion={this.props.criterion} 
-				defaultValue={this.state.sliderValue} 
+				value={this.state.sliderValue} 
 				color={this.props.color} />
 			</If>
 

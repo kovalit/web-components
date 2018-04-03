@@ -43,7 +43,7 @@ const Card = (props) => {
 			    editable={false}
 			    scalegrid={index === 0}
 			    criterion={criteria[item.criteria_id]} 
-			    defaultValue={item.value} 
+			    value={item.value} 
 			    color={criteria[item.criteria_id].color} />
 			    
 			    
