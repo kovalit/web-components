@@ -1,0 +1,18 @@
+.post-score{
+    width: 100%; 
+    background-color: green;
+    position: relative;
+    border-radius: 4px;
+    margin-bottom: 16px
+}
+.post-score-delete {
+    position: absolute;
+    top: 0;
+    right: -20px;
+    cursor: pointer;
+    opacity: .5;
+    
+    &:hover {
+       opacity: .2; 
+    }
+}
