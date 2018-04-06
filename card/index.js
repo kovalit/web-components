@@ -1,4 +1,6 @@
 import React from 'react';
+import helpers from 'helpers';
+
 import CardNumber from 'components/card-number';
 import CriterionSlider from 'components/criterion-slider';
 
@@ -31,7 +33,7 @@ const Card = (props) => {
 	    </div>
 	    <div className="card-left">
 		<div className="card-image">
-		    <img src="" />
+		    <img src={helpers.imgUrl(object.main_image)} />
 		</div>
 	    </div>
 	    <div className="card-right">
