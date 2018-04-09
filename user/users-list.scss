@@ -1,0 +1,55 @@
+@import "styles/constant";
+
+.bar {
+    background: #D5D5D5;
+    position: relative;
+    height: $barHeigth;
+    line-height: $barHeigth;
+    border-radius: 4px;
+    min-width: 44px;
+    text-align: center;
+    font-size: 13px;
+    font-family: LatoBold;
+
+    .bar_item {
+        position: absolute;
+        display: inline-block;
+        height: $barHeigth;
+        line-height: $barHeigth;
+        font-size: 16px;
+        float: left;
+        color: #333333;
+    }
+
+    .bar_item::after {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+        color: #BDBDBD;
+        top: $barHeigth;
+    }
+
+    .value {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        border-radius: 4px;
+    }
+
+    .start-label {
+        left: 10px;
+    }
+
+    .start-label::after {
+        left: -10px;
+    }
+
+    .end-label {
+        right: 0;
+    }
+
+    .end-label::after {
+        right: 0;
+    }
+}
