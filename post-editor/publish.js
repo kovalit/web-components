@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { slugify } from 'transliter';
 import './publish.scss';
 
 
@@ -8,7 +9,8 @@ class PostPublist extends Component {
 	super(props);
 	
 	this.state = {
-	    preamble: ""
+	    preamble: this.props.post.preamble,
+	    alias: slugify(this.props.post.title)
 	};
 	
 	this.onChange = this.onChange.bind(this);
@@ -20,7 +22,15 @@ class PostPublist extends Component {
     }
     
     onSave() {
-	this.props.onPublish();
+	let data = {};
+	data.alias = this.state.alias;
+	
+	if (this.state.preamble !== "") {
+	    data.preamble = this.state.preamble;
+	}
+	
+	data.published = true;
+	this.props.onPublish(data);
     }
     
     stopPropagation(e) {
@@ -33,10 +43,15 @@ class PostPublist extends Component {
 	    <div className="post-publish"  onClick={this.stopPropagation}>
 		<div className="post-publish__title">Публикация</div>
 		<label>Ссылка на статью</label>
-		<input type="input" placeholder="" value="vk.com/@kovalit-" />
+		<input 
+		    type="input" 
+		    value={this.state.alias} />
 
 		<label>Аннотация</label>
-		<textarea row="3"></textarea>
+		<textarea 
+		    row="3"
+		    value={this.state.preamble} 
+		    onChange={(e) => this.setState({preamble: e.target.value})}></textarea>
 
 		<label>Обложка</label>
 		<input type="file" ref="fileInput" onChange={this.onChange} />
