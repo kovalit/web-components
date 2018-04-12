@@ -32,10 +32,10 @@ class CommentEditor extends Component {
     
     onSave(e) {
 	let params = {
-	    text: this.textarea.innerText,
-	    value: this.state.value,
-	    criterion_id: this.props.criterion.id,
-	    object_id: this.props.object_id
+	    comment: this.textarea.innerText,
+	    value: parseFloat(this.state.value),
+	    criteria_id: this.props.criterion.id,
+	    entity_id: this.props.entity_id
 	};
 	
 	this.setState({

@@ -63,7 +63,7 @@ const Card = (props) => {
 			</For>
 			
 			<CommentEditor 
-			    object_id={object.id}
+			    entity_id={object.id}
 			    criterion={criteria[item.criteria_id]} 
 			    color={criteria[item.criteria_id].color}
 			    user={props.me}
