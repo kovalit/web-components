@@ -12,34 +12,36 @@ import './card.scss';
 
 const Card = (props) => {
     
-    let {number, object, criteria} = props;
+    let {number, entity, criteria} = props;
 
     
-    let avg_scores = object.avgScores.sort(function(a,b) {
-	return a.criteriaId - b.criteriaId;
-    });
+    let avg_scores = entity.avgScores.sort((a,b) => {
+	    return a.criteriaId - b.criteriaId;
+	});
   
-    let current_user_scores = object.currentUserScores.reduce((item, cur)=> {item[cur.criteriaId] = cur; return item;}, {});
+    let current_user_scores = entity.currentUserScores.reduce((item, cur) => 
+	    {item[cur.criteriaId] = cur; return item;
+	}, {});
 
     return (
 	<div className="card">
 	  
-	    <CardNumber score={object.avg} number={number} />
+	    <CardNumber score={entity.avg} number={number} />
 	    <div className="card-header">
-		<div className="card-header__title">{object.label}</div>
+		<div className="card-header__title">{entity.label}</div>
 		<div className="card-header__opinions">
 		    <div className="opinions__count">- мнений</div>
 		</div>
 	    </div>
 	    <div className="card-left">
 		<div className="card-image">
-		    <img src={helpers.imgUrl(object.mainImage)} />
+		    <img src={helpers.imgUrl(entity.mainImage)} />
 		</div>
 	    </div>
 	    <div className="card-right">
 		<For each="item" index="index" of={avg_scores }>
 	
-		    <div key={index}  onClick={()=>props.toggleScores(object.id, item.criteriaId, item.isOpen )}>
+		    <div key={index}  onClick={()=>props.toggleScores(entity.id, item.criteriaId, item.isOpen )}>
 			
 			<CriterionSlider 
 			    editable={false}
@@ -63,7 +65,7 @@ const Card = (props) => {
 			</For>
 			
 			<CommentEditor 
-			    entityId={object.id}
+			    entityId={entity.id}
 			    criterion={criteria[item.criteriaId]} 
 			    color={criteria[item.criteriaId].color}
 			    user={props.me}
