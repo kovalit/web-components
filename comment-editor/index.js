@@ -34,8 +34,8 @@ class CommentEditor extends Component {
 	let params = {
 	    comment: this.textarea.innerText,
 	    value: parseFloat(this.state.value),
-	    criteria_id: this.props.criterion.id,
-	    entity_id: this.props.entity_id
+	    criteriaId: this.props.criterion.id,
+	    entityId: this.props.entityId
 	};
 	
 	this.setState({
@@ -77,7 +77,7 @@ class CommentEditor extends Component {
 	    <div className={classNames.join(" ")} >
 
 	    <div className="editor-col-avatar">
-		<div style={{backgroundImage: `url(${this.props.user.main_image})`}} className="avatar32"></div>
+		<div style={{backgroundImage: `url(${this.props.user.mainImage})`}} className="avatar32"></div>
 	    </div>
 	    <div className="editor-col-main">
 		<div className="editor-reply"></div>

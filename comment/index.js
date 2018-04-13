@@ -91,7 +91,7 @@ class Comment extends Component {
 		
 		<div className="comment-header">
 		    <div className="comment-avatar">
-			<div className="avatar32" style={{backgroundImage: `url(${user.main_image})`}}></div>
+			<div className="avatar32" style={{backgroundImage: `url(${user.mainImage})`}}></div>
 		    </div>
 
 		    <div className="comment-username">

@@ -6,7 +6,7 @@ const HeaderUser = ({user}) => {
     return (
 	 <div className="header-user menu-owner">
 	    <div className="table-cell">
-		<div className="header-avatar" style={{backgroundImage: `url(${user.main_image})`}}></div>
+		<div className="header-avatar" style={{backgroundImage: `url(${user.mainImage})`}}></div>
 	    </div>
 	    <div className="table-cell">
 		<div className="header-username">{user.name}</div>
