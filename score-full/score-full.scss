@@ -1,0 +1,46 @@
+@import "styles/mixins/breakpoint";
+
+.score-full {
+
+    
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+.sfe {
+    float: left;
+    width: 170px;
+    margin-right: 16px;
+}
+
+.sfc {
+    float: left;
+    max-width: 400px;
+    width: 100%;
+}
+
+.sfe__label {
+    font-size: 16px;
+    padding-bottom: 16px;
+    font-family: LatoBold;
+}
+
+.sfe__img-wrap {
+
+    text-align: center;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 0;
+}
+
+.sfe__img {
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+    width: 128px;
+    height: 128px;
+    display: inline-block
+}
