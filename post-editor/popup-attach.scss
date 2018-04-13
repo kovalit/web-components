@@ -1,0 +1,22 @@
+@import "styles/constant";
+@import "styles/mixins/transform";
+@import "styles/mixins/breakpoint";
+
+.popup-attachScore {
+    .popup-window {
+        max-width: 640px;
+        width: calc(100% - 32px);
+        border-radius: 4px;
+        padding: 16px 32px;
+            
+        @include transform("translate(-50%, -50%)");
+        top: 50%;
+        left: 50%;
+        right: 50%;
+    }
+    
+    .close {
+        display: none;
+    }
+}
+
