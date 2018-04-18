@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ScoreFull from 'components/score-full';
 import './post-score.scss';
 
 class PostScore extends Component {
@@ -7,17 +8,18 @@ class PostScore extends Component {
     }
 
     render() {
-	const id = this.props.block.get("data").get("id");
+	const score= this.props.blockProps.score;
+	console.log("score", score);
 	const key = this.props.block.getKey();
+	
 	return (
 	    <div className='post-score'>
-		<div className="bar bar_criterion">
-		    <div className="value" style={{width: "90.4167%", backgroundColor: "rgb(100, 185, 223)"}}></div>
-		    <div className="slider" style={{left: "90.4167%"}}></div>
-		    <span className="bar_item bar_scale start-label">надежность</span>
-		    <span className="bar_item bar_scale center"></span>
-		    <span className="bar_item bar_scale end-label">4</span>
-		</div>
+		<ScoreFull 
+		    value={score.value}
+		    user={score.user}
+		    criterion={score.criterion}
+		    entity={score.entity}
+		/>
 
 		<div className="post-score-delete" onClick={()=>this.props.blockProps.onClick(key)}>
 		    <i className="fas fa-times-circle"></i>

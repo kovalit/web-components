@@ -1,9 +1,9 @@
 .post-score{
     width: 100%; 
-    background-color: green;
     position: relative;
     border-radius: 4px;
-    margin-bottom: 16px
+    margin-bottom: 16px;
+    border: 1px dotted #ccc;
 }
 .post-score-delete {
     position: absolute;
