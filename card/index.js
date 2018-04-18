@@ -13,13 +13,12 @@ import './card.scss';
 const Card = (props) => {
     
     let {number, entity, criteria} = props;
-
     
-    let avg_scores = entity.avgScores.sort((a,b) => {
+    let avgScores = entity.avgScores.sort((a,b) => {
 	    return a.criteriaId - b.criteriaId;
 	});
   
-    let current_user_scores = entity.currentUserScores.reduce((item, cur) => 
+    let currentUserScores = entity.currentUserScores.reduce((item, cur) => 
 	    {item[cur.criteriaId] = cur; return item;
 	}, {});
 
@@ -39,7 +38,7 @@ const Card = (props) => {
 		</div>
 	    </div>
 	    <div className="card-right">
-		<For each="item" index="index" of={avg_scores }>
+		<For each="item" index="index" of={ avgScores }>
 	
 		    <div key={index}  onClick={()=>props.toggleScores(entity.id, item.criteriaId, item.isOpen )}>
 			
@@ -70,7 +69,7 @@ const Card = (props) => {
 			    color={criteria[item.criteriaId].color}
 			    user={props.me}
 			    onSave={(params)=>props.onScoreSave(params)}
-			    score={item.criteriaId in current_user_scores ?  current_user_scores[item.criteriaId].value : null} />
+			    score={item.criteriaId in currentUserScores ?  currentUserScores[item.criteriaId].value : null} />
 		    </If>
 
 		</For>

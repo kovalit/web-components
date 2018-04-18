@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import ReactDOM  from 'react-dom';
 
 //modules
+import api from 'api';
+import request from 'request';
 import helpers from 'helpers';
+
 
 // components
 import CriterionCheckbox from 'components/criterion-checkbox';
@@ -19,6 +22,7 @@ class LandingRating extends Component {
 	this.state = {
 	    isClient: typeof window != 'undefined' && window.document,
 	    objects: [],
+	    criteria: [],
 	    selectedCriteria: [],
 	};
 	
@@ -26,16 +30,24 @@ class LandingRating extends Component {
 
     componentWillReceiveProps(props){
 	let list = props.criteria.filter(item => item.active).map(item=>item.id).join(",");
+	
 	if (list !== "") {
-	    fetch('http://whatsbetter.me/api/spheres/pda/objects?limit=3&criteria=' + list)
-		.then(res => res.json())
+	    request(api.entities.findAll, {sphereId: "auto", criteria: list, limit: 3})
 		.then(body => {
+		    		   
 		    this.setState({
-			objects: body.data
-		    });
+			    objects: body.entities,
+			    criteria: props.criteria
+			});
 		});
 	}
     }
+    
+   sort (avgScores) {
+       return avgScores.sort((a,b) => {
+	    return a.criteriaId - b.criteriaId;
+	});
+   }
     
     
     render() {
@@ -51,24 +63,28 @@ class LandingRating extends Component {
 			    <a href="#" className="choose-link btn">Выбрать сферу</a>
 			</div>
 			<div className="rates-block-main narrow-block">
-			    <div className="rates-block-main-top clearfix">
-				<div className="rates-block-title">
-				    <h2>Смартфоны</h2>
-				    <a href="#" className="rates-share"><img src="img/share-symbol.svg" alt=""/></a>
+			    <If condition={this.props.sphere}>	    
+				<div className="rates-block-main-top clearfix">
+				    <div className="rates-block-title">
+					    <h2>{this.props.sphere.label}</h2>
+					<a href="#" className="rates-share"><img src="img/share-symbol.svg" alt=""/></a>
+				    </div>
+				    <div className="rates-top-right">
+					<div className="rates-search">
+					    <input type="search" className="search-inp" placeholder="Поиск по 214 объектам" />
+					    <input type="submit" className="btn search-btn" />
+					</div>
+					<div className="rates-select">
+					    <a href="#" className="rates-select-link">Все 41 245 мнений</a>
+					</div>
+					<div className="rates-menu">
+					    <a href="#" className="rates-menu-pull"><img src="img/menu-2.svg" alt=""/></a>
+					</div>
+				    </div>
 				</div>
-				<div className="rates-top-right">
-				    <div className="rates-search">
-					<input type="search" className="search-inp" placeholder="Поиск по 214 объектам" />
-					<input type="submit" className="btn search-btn" />
-				    </div>
-				    <div className="rates-select">
-					<a href="#" className="rates-select-link">Все 41 245 мнений</a>
-				    </div>
-				    <div className="rates-menu">
-					<a href="#" className="rates-menu-pull"><img src="img/menu-2.svg" alt=""/></a>
-				    </div>
-				</div>
-			    </div>
+			    </If>
+			    
+			    
 			    <div className="rates-block-main-filter">
 				<h4>Популярные критерии</h4>
 				<div className="rates-block-main-filter-colored">
@@ -94,11 +110,11 @@ class LandingRating extends Component {
 					<div key={index} className="swiper-slide">
 					    <div className="rates-block-item">
 						<a href="#" className="rates-block-item-img">
-						    <img src={helpers.imgUrl(object.main_image_hash, "auto-400")} alt=""/>
+						    <img src={helpers.imgUrl(object.mainImage, "auto-400")} alt=""/>
 						    
 						    <span className="rates-item-rate">
-							<span className="rates-item-rate-top">{object.n + 1}</span>
-							<span className="rates-item-rate-btm">{(object.score * 5).toFixed(1)}</span>
+							<span className="rates-item-rate-top">{index + 1}</span>
+							<span className="rates-item-rate-btm">{(object.avg * 5).toFixed(1)}</span>
 							<span className="rates-item-rate-txt">Средняя оценка</span>
 						    </span>
 						</a>
@@ -107,12 +123,13 @@ class LandingRating extends Component {
 						    <span className="rates-block-item-title-rate">{object.votes}</span>
 						</div>
 						<div className="rates-block-item-stat">
-						    <For each="key" index="index" of={Object.keys(object.criteria)}>
+						
+						    <For each="item" index="index" of={this.sort(object.avgScores)}>
 							<CriterionBar
 							    key={index}
-							    id={object.criteria[key].criterion.id}
+							    id={item.criteriaId}
 							    title=""
-							    score={object.criteria[key].score}
+							    score={item.value}
 							    size={12} />
 						    </For>
 						    
