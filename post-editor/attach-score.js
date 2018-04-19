@@ -16,7 +16,8 @@ class AttachScore extends Component {
 	    criteria: [],
 	    selSphere: null,
 	    selCriterion: null,
-	    selEntity: null
+	    selEntity: null,
+	    value: null,
 	};
 	
 	this.selectSphere = this.selectSphere.bind(this);
@@ -83,13 +84,13 @@ class AttachScore extends Component {
     
     onSave() {
 	
-	let {selSphere, selCriterion, selEntity} = this.state;
+	let {selSphere, selCriterion, selEntity, value} = this.state;
 	
 	let data = {
 	    sphere: selSphere,
 	    criterion: selCriterion,
 	    entity: selEntity,
-	    value: 0.5
+	    value: value
 	};
 	
 	this.props.onSave(data);
@@ -126,6 +127,11 @@ class AttachScore extends Component {
 			    <option key={index} value={entity.id}>{entity.label}</option>    
 			</For>
 		    </select>
+		</div>
+		
+		<div>
+		    <label>Оценка</label><br/>
+		    <input type="text" onChange={(e) => this.setState({value: e.target.value})} />
 		</div>
 		
 		<div>
