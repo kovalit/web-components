@@ -14,11 +14,15 @@ class AttachScore extends Component {
 	    spheres: [],
 	    entities: [],
 	    criteria: [],
-	    sphereId: null,
+	    selSphere: null,
+	    selCriterion: null,
+	    selEntity: null
 	};
 	
-	this.selectSphere = this.selectSphere.bind(this)
-	this.selectCriterion = this.selectCriterion.bind(this)
+	this.selectSphere = this.selectSphere.bind(this);
+	this.selectCriterion = this.selectCriterion.bind(this);
+	this.selectEntity = this.selectEntity.bind(this);
+	this.onSave = this.onSave.bind(this);
     }
     
     componentDidMount() {
@@ -28,24 +32,67 @@ class AttachScore extends Component {
 	    });
     }
     
-    selectSphere(val) {	
-	let sphereId = val.target.value;
-	request(api.criteria.findAll, {sphere: val.target.value})
+    selectSphere(e) {
+	let {options, selectedIndex, value} = e.target;
+   
+	let sphere = {
+	    id: value,
+	    label: options[selectedIndex].innerHTML 
+	};
+
+	request(api.criteria.findAll, {sphereId: sphere.id})
 	    .then(body => {
 		this.setState({
-		    sphereId: sphereId,
+		    selSphere: sphere,
 		    criteria: body.criteria
-		})
+		});
 	    });
     }
     
-    selectCriterion(val) {
-	request(api.entities.findAll, {sphereId: this.state.sphereId, criteria: val.target.value})
+    selectCriterion(e) {
+	let {options, selectedIndex, value} = e.target;
+	
+	let criterion = {
+	    id: value,
+	    label: options[selectedIndex].innerHTML 
+	};
+	
+	request(api.entities.findAll, {sphereId: this.state.selSphere.id, criteria: criterion.id})
 	    .then(body => {
 		this.setState({
+		    selCriterion: criterion,
 		    entities: body.entities
 		});
 	    });
+    }
+    
+    selectEntity(e) {
+	let {options, selectedIndex, value} = e.target;
+	
+	let entity = {
+	    id: value,
+	    label: options[selectedIndex].innerHTML,
+	    mainImage: null
+	};
+    
+	this.setState({
+	    selEntity: entity,
+	});
+	    
+    }
+    
+    onSave() {
+	
+	let {selSphere, selCriterion, selEntity} = this.state;
+	
+	let data = {
+	    sphere: selSphere,
+	    criterion: selCriterion,
+	    entity: selEntity,
+	    value: 0.5
+	};
+	
+	this.props.onSave(data);
     }
     
 
@@ -53,23 +100,39 @@ class AttachScore extends Component {
 	return (
 	    <div>
 		<h4>Добавьте оценку</h4>
-		<select onChange={this.selectSphere} name="spheres">
-		    <For each="sphere" index="index" of={this.state.spheres }>
-			<option key={index} value={sphere.id}>{sphere.label}</option>    
-		    </For>
-		</select>
 		
-		<select onChange={this.selectCriterion} name="criterion">
-		    <For  each="criterion" index="index" of={this.state.criteria }>
-			<option key={index} value={criterion.id}>{criterion.label}</option>    
-		    </For>
-		</select>
+		<div>
+		    <label>Выберите сферу</label><br/>
+		    <select onChange={this.selectSphere} name="spheres">
+			<For each="sphere" index="index" of={this.state.spheres }>
+			    <option key={index} value={sphere.id}>{sphere.label}</option>    
+			</For>
+		    </select>
+		</div>
 		
-		<select onChange={this.selectEntity} name="entities">
-		    <For each="entity" index="index" of={this.state.entities }>
-			<option key={index} value={entity.id}>{entity.label}</option>    
-		    </For>
-		</select>
+		<div>
+		    <label>Выберите критерий</label><br/>
+		    <select onChange={this.selectCriterion} name="criterion">
+			<For  each="criterion" index="index" of={this.state.criteria }>
+			    <option key={index} value={criterion.id}>{criterion.label}</option>    
+			</For>
+		    </select>
+		</div>
+		
+		<div>
+		    <label>Выберите объект</label><br/>
+		    <select onChange={this.selectEntity} name="entities">
+			<For each="entity" index="index" of={this.state.entities }>
+			    <option key={index} value={entity.id}>{entity.label}</option>    
+			</For>
+		    </select>
+		</div>
+		
+		<div>
+		    <button onClick={this.onSave}>Добавить</button>
+		</div>
+		
+		
 	    </div>
 	);
     }

@@ -14,7 +14,7 @@ class ScoreFull extends Component {
     
     render() {
 	let {criterion, entity, user, value} = this.props;
-
+	console.log("ScoreFull", this.props)
 	return (
 	    <div className="score-full">
 		<div className="score-full-entity sfe">

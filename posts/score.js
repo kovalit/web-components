@@ -9,7 +9,6 @@ class PostScore extends Component {
 
     render() {
 	const score= this.props.blockProps.score;
-	console.log("score", score);
 	const key = this.props.block.getKey();
 	
 	return (
