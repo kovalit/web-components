@@ -3,7 +3,7 @@ import helpers from 'helpers';
 
 const Post = ({post, onClick}) => {
     return (
-	<div onClick={onClick.bind(null, post.alias)} className="swiper-slide">
+	<div onClick={onClick.bind(null, post.id)} className="swiper-slide">
 	    <div className="news-slider-item">
 		<span className="news-slider-img">
 		    <If condition={post.preamble_images.length === 1}>
