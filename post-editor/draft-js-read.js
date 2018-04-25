@@ -2,6 +2,9 @@ import {convertFromHTML} from 'draft-convert';
 
 const settings = {
     htmlToEntity: (nodeName, node, createEntity) => {
+	if (nodeName === 'a') {
+            return createEntity('LINK', 'IMMUTABLE', {url: node.href});
+        }
 	if (nodeName === 'score') {
 	    let id = node.getAttribute('id');
 	    return createEntity('score', 'MUTABLE', { id: id });

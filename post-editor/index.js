@@ -6,6 +6,7 @@ import {
     Entity,
     RichUtils,
     ContentState,
+    Modifier,
     CompositeDecorator,
     AtomicBlockUtils,
     DefaultDraftBlockRenderMap } from 'draft-js';
@@ -49,18 +50,48 @@ const blockRenderMap = Map({
 });
 
 const extendedBlockRenderMap = DefaultDraftBlockRenderMap.merge(blockRenderMap);
+    function findLinkEntities(contentBlock, callback, contentState) {
+        contentBlock.findEntityRanges(
+          (character) => {
+            const entityKey = character.getEntity();
+            return (
+              entityKey !== null &&
+              contentState.getEntity(entityKey).getType() === 'LINK'
+            );
+          },
+          callback
+        );
+    }
 
+    const Link = (props) => {
+        const {url} = props.contentState.getEntity(props.entityKey).getData();
+        return (
+          <a href={url}>
+            {props.children}
+          </a>
+        );
+    };
+      
+const decorator = new CompositeDecorator([
+      {
+	  strategy: findLinkEntities,
+	  component: Link,
+      },
+  ]);
 
 class PostEditor extends Component {
     
     constructor(props) {
 	super(props);
+	
+	
+	
 	this.state = { 
 	    post: null,
 	    isPublishDialog: false,
 	    isNew: this.props.isNew || false,
 	    scores: {},
-	    editorState: EditorState.createEmpty(),
+	    editorState: EditorState.createEmpty(decorator),
 	    inlineToolbar: { 
 		show: false 
 	    }
@@ -83,6 +114,8 @@ class PostEditor extends Component {
 	    else {
 		this.setState({ inlineToolbar: { show: false } });
 	    }
+
+	    
 	    this.setState({ editorState });
 	    setTimeout(this.updateSelection, 0);
 	};
@@ -90,6 +123,8 @@ class PostEditor extends Component {
 	this.save = this.save.bind(this);
 	this.onPublish = this.onPublish.bind(this);
 	this.onPublishShow = this.onPublishShow.bind(this);
+	this.confirmLink = this.confirmLink.bind(this);
+	
 	
 	//this.focus = () => this.refs.editor.focus();
 	this.onTop = () => this._onTop();
@@ -180,16 +215,15 @@ class PostEditor extends Component {
 	    });
 	    return;
 	}
-	
-	let id = this.props.id || this.props.match.params.id;
-	
-	request(api.posts.findByAlias, {id: id})
+
+	console.log("id", this.props.id)
+	request(api.posts.findByAlias, {id: this.props.id})
 	    .then(body => {
 		let html = draftJsRead(body.post.content);
-		console.log(decodeURI(body.post.content))
+	
 		this.setState({
 		    post: body.post,
-		    editorState: EditorState.createWithContent(html),
+		    editorState: EditorState.createWithContent(html, decorator),
 		});
 	    });
     }
@@ -258,6 +292,32 @@ class PostEditor extends Component {
     _insertImage(file) {
 	//const entityKey = Entity.create('atomic', 'IMMUTABLE', {src: URL.createObjectURL(file)});
 	//this.onChange(AtomicBlockUtils.insertAtomicBlock(this.state.editorState, entityKey,' '));
+    }
+    
+    confirmLink(urlValue) {
+
+	
+	
+	
+	
+	
+    
+	const {editorState} = this.state;
+	const contentState = editorState.getCurrentContent();
+	const contentStateWithEntity = contentState.createEntity('LINK', 'IMMUTABLE', {url: 'http://www.zombo.com'});
+	
+	const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+	const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+
+	this.onChange(
+	    RichUtils.toggleLink(
+		newEditorState,
+		newEditorState.getSelection(),
+		entityKey
+            )
+	);
+        
+   
     }
 
     _handleFileInput(e) {
@@ -372,6 +432,7 @@ class PostEditor extends Component {
 		    <If condition={this.state.inlineToolbar.show}>
 		       <InlineToolbar
 			    editorState={editorState}
+			    confirmLink={this.confirmLink}
 			    toggleInlineStyle={this.toggleInlineStyle}
 			    toggleBlockType={this.toggleBlockType}
 			    position={this.state.inlineToolbar.position} />

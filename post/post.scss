@@ -46,6 +46,11 @@
         line-height: 40px;
     }
     
+    a:hover, a{
+        color: #0074D9;
+        text-decoration: underline;
+    }
+    
     p, ul, blockquote, .paragraph {
         margin-bottom: 32px;
     }
