@@ -295,13 +295,6 @@ class PostEditor extends Component {
     }
     
     confirmLink(urlValue) {
-
-	
-	
-	
-	
-	
-    
 	const {editorState} = this.state;
 	const contentState = editorState.getCurrentContent();
 	const contentStateWithEntity = contentState.createEntity('LINK', 'IMMUTABLE', {url: 'http://www.zombo.com'});
@@ -327,8 +320,10 @@ class PostEditor extends Component {
     }
     
     componentWillReceiveProps(props){
-	if("payload" in props.posteditor) {
-	    let payload = props.posteditor.payload;
+	
+	console.log(props)
+	if("payload" in props.attachments) {
+	    let payload = props.attachments.payload;
 	    
 	    let params = {
 		value: parseFloat(payload.value),
@@ -398,7 +393,7 @@ class PostEditor extends Component {
 	if (!post) {
 	    return null;
 	}
-
+	console.log(this.props)
 	return (
 	    <div className="post-wrapper">
 		<div className="post-close" onClick={this.props.onClose}></div>
