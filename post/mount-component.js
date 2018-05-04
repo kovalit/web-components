@@ -1,7 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-import camelcase from 'camelcase';
 
 var DATA_ATTR_REGEX = /^([\w-_]*)/i;
 var components = [];
@@ -45,7 +42,7 @@ function loadJson(el) {
     var result = {};
 
     // Get the key-name from `data-name`, `name`, default is "data"
-    var key = camelcase(getNamedAttribute(el, 'data-name', 'data'));
+    var key = getNamedAttribute(el, 'data-name', 'data');
 
     try {
         var content = el.innerHTML;
@@ -93,7 +90,7 @@ function getProps(el) {
             continue;
         }
 
-        var propName = camelcase(match[1]);
+        var propName = match[1];
         var value = decodeURI(attrs[j].value);
 
         result[propName] = value;
