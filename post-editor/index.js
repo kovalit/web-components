@@ -320,8 +320,6 @@ class PostEditor extends Component {
     }
     
     componentWillReceiveProps(props){
-	
-	console.log(props)
 	if("payload" in props.attachments) {
 	    let payload = props.attachments.payload;
 	    
