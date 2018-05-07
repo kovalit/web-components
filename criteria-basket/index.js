@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import './criteria-basket.scss';
 
+// Components
 import CriterionCheckbox from 'components/criterion-checkbox';
 
  class CriteriaBasket extends Component {
