@@ -6,9 +6,9 @@ const HeaderNav = (props) => {
 
     return (
 	<div className="header-nav">
-	    <a className={classnames({"header-nav__item": true, active: props.page === "rating"})} 
+	    <a className={classnames({"header-nav__item": true, "header-nav_rating": true, active: props.page === "rating"})} 
 			href="/main/auto/rating">Рейтинги</a>
-	    <a className={classnames({"header-nav__item": true, active: props.page === "posts"})}   
+	    <a className={classnames({"header-nav__item": true, "header-nav_posts": true, active: props.page === "posts"})}   
 		href="/posts">Посты</a>
 	</div>
 		    

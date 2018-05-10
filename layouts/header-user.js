@@ -8,7 +8,7 @@ const HeaderUser = ({user}) => {
     return (
 	 <div className="header-user menu-owner">
 	    <div className="table-cell">
-		<div className="header-avatar" style={helpers.imgStyle(user.mainImage)}></div>
+		<div className="header-avatar" style={helpers.imgStyle(user.mainImage, '96-96')}></div>
 	    </div>
 	    <div className="table-cell">
 		<div className="header-username">{user.name}</div>

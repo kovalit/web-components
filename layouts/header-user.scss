@@ -5,10 +5,9 @@
 .header-user {
     display: table;
     float: right;
-    width: 184px;
-    height: 42px;
+    width: 232px;
+    height: 64px;
     border-radius: 4px;
-    border: 1px solid #eee;
     padding: 4px;
     margin: 7px 4px 12px 7px;
     cursor: pointer;
@@ -21,8 +20,8 @@
 .header-avatar {
     float: left;
     display: inline-block;
-    height: 24px;
-    width: 24px;
+    height: 48px;
+    width: 48px;
     border-radius: 50%;
     background-repeat: no-repeat;
     background-color: #f5f5f5;
@@ -31,18 +30,21 @@
 
 .header-username {
     line-height: 16px;
-    font-size: 12px;
-    font-family: LatoMedium;
+    font-size: 18px;
+    font-family: LatoBold;
     color: #4A4A4A;
-    max-width: 132px;
+    padding-left: 8px;
+    max-width: 168px;
     @include text-overflow;
 }
 
 .header-usercarma {
     line-height: 16px;
-    font-size: 12px;
-    font-family: LatoRegular;
+    font-size: 16px;
+    font-family: LatoMedium;
     color: #9B9B9B;
-    max-width: 132px;
+    padding-left: 8px;
+    padding-top: 6px;
+    max-width: 168px;
     @include text-overflow;
 }
