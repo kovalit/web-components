@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './comment-editor.scss';
 
+// Modules
+import helpers from 'helpers';
+
+// Components
 import CriterionSlider from 'components/criterion-slider';
 
 
@@ -77,7 +81,7 @@ class CommentEditor extends Component {
 	    <div className={classNames.join(" ")} >
 
 	    <div className="editor-col-avatar">
-		<div style={{backgroundImage: `url(${this.props.user.mainImage})`}} className="avatar32"></div>
+		<div className="avatar32 style={helpers.imgStyle(this.props.user.mainImage, '64-64')} "></div>
 	    </div>
 	    <div className="editor-col-main">
 		<div className="editor-reply"></div>

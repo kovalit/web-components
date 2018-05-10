@@ -173,8 +173,6 @@ class PostEditor extends Component {
 			id: data.id,
 			score: score,
 			onClick: (blockKey) => {
-			    
-			    console.log(blockKey)
 			    let newState = removeBlock(this.state.editorState, blockKey);
 			    this.onChange(newState);
 			}
@@ -233,10 +231,12 @@ class PostEditor extends Component {
 	post.title = this.refs.title.innerHTML;
 	post.content = draftJsSave(this.state.editorState.getCurrentContent());
 	post.scores = Object.keys(this.state.scores).join(",");
-
+	console.log("save", this.state.isNew)
 	if (this.state.isNew) {
 	    request(api.posts.create, post)
 		.then(body => {
+		    
+		    console.log(body)
 		    this.setState({
 			isNew: false,
 			post: Object.assign({}, post, {id: body.createPost.id})
@@ -391,7 +391,7 @@ class PostEditor extends Component {
 	if (!post) {
 	    return null;
 	}
-	console.log(this.props)
+
 	return (
 	    <div className="post-wrapper">
 		<div className="post-close" onClick={this.props.onClose}></div>
