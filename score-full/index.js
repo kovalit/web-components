@@ -18,15 +18,13 @@ class ScoreFull extends Component {
 	return (
 	    <div className="score-full">
 		<div className="score-full-entity sfe">
+		    <div className="sfe__img" style={helpers.imgStyle(entity.mainImage, '256-256')}></div>
+		    
 		    <div className="sfe__label">{entity.label}</div>
-		    <div className="sfe__img-wrap">
-			<div className="sfe__img" style={helpers.imgStyle(entity.mainImage)}></div>
-		    </div>
 		    
 		</div>
 		<div className="score-full-criterion sfc">
-		    <User user={user} />
-		    <ScoreBar criterion={criterion} value={value} />
+		    <ScoreBar size={48} criterion={criterion} value={value} />
 		</div>
 	    </div>
 	);

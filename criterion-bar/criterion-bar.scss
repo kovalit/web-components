@@ -29,6 +29,15 @@
     }
 }
 
+.bar48{
+    height: 48px; 
+  
+    .criterion-bar__score {
+        line-height: 32px;
+        font-size: 14px;
+    }
+}
+
 .criterion-bar {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;

@@ -26,7 +26,7 @@ const ScoreBar = (props) => {
     
     
     return (	
-	<div className="bar bar_criterion">
+	<div className={`bar bar${props.size} bar_criterion`}>
 	    <div className="value" style={style}></div>
 	    <span className="bar_item bar_scale start-label">{props.criterion.label}</span>
 	    <span className="bar_item bar_scale center"></span>

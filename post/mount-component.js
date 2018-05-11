@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 
 var DATA_ATTR_REGEX = /^([\w-_]*)/i;
 var components = [];

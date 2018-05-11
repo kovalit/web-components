@@ -53,3 +53,18 @@
         right: -10px;
     }
 }
+
+.bar48{
+    height: 48px; 
+    
+    .bar_item {
+        height: 48px;
+        line-height: 48px;
+        font-size: 24px;
+    }
+    
+    .bar_scale::after {
+        top: 48px;
+        line-height: 24px;
+    }
+}
