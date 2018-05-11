@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
+import './user.scss'
 
 //Modules
 import helpers from 'helpers';
 
 
-const User = ({user}) => {
+const User = ({user, size}) => {
+    let hashsize = parseInt(size, 10) * 2;
     return (
 	<div className="user">
-	<div className="table-cell">
-	    <div className="avatar32" style={helpers.imgStyle(user.mainImage, '64-64')}></div>
-	</div>
-	<div className="table-cell">
-	    <div className="user">{user.name}</div>
-	</div>
+	    <div className="table-cell">
+		<div className={`avatar${size}`} style={helpers.imgStyle(user.mainImage, `${hashsize}-${hashsize}`)}></div>
+	    </div>
+	    <div className="table-cell">
+		<div className="user-name">{user.name}</div>
+	    </div>
 	</div>
     );
 };

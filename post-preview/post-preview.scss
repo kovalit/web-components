@@ -1,0 +1,43 @@
+.posts-item {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0 32px 0;
+}
+
+.posts-item-content {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 700px;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 32px;
+    
+    &:hover {
+       color: #000;
+       text-decoration: none;
+    }
+}
+
+.posts-item__title {
+    font-family: LatoBold;
+    font-size: 40px;
+    color: #fff;
+    line-height: 48px;
+    text-decoration: none;
+}
+
+.posts-item__date {
+    font-family: LatoBold;
+    font-size: 10px;
+    color: #fff;
+    line-height: 12px;
+    margin-top: 16px;
+}
+
+.posts-item__preamble {
+    font-family: LatoMedium;
+    font-size: 22px;
+    color: #fff;
+    line-height: 32px;
+    margin-top: 8px;
+}

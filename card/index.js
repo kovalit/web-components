@@ -34,7 +34,7 @@ const Card = (props) => {
 	    </div>
 	    <div className="card-left">
 		<div className="card-image">
-		    <img src={helpers.imgStyle(entity.mainImage)} />
+		    <img src={helpers.imgUrl(entity.mainImage)} />
 		</div>
 	    </div>
 	    <div className="card-right">

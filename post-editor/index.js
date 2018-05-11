@@ -231,7 +231,8 @@ class PostEditor extends Component {
 	post.title = this.refs.title.innerHTML;
 	post.content = draftJsSave(this.state.editorState.getCurrentContent());
 	post.scores = Object.keys(this.state.scores).join(",");
-	console.log("save", this.state.isNew)
+	console.log("save", this.state.isNew);
+
 	if (this.state.isNew) {
 	    request(api.posts.create, post)
 		.then(body => {
