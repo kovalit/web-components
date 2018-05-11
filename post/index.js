@@ -70,7 +70,7 @@ class Post extends Component {
 		    <If condition={post}>    
 			<div className="post-header">
 			    <div className="float-left">
-				<User user={post.author} />
+				<User user={post.author} size={48} />
 			    </div>		 
 			    <If condition={post.author.id === this.props.me.id}>
 				<div className="float-right"> 

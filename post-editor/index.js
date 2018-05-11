@@ -228,10 +228,10 @@ class PostEditor extends Component {
   
     save() {
 	let post = Object.assign({}, this.state.post);
+	
 	post.title = this.refs.title.innerHTML;
 	post.content = draftJsSave(this.state.editorState.getCurrentContent());
-	post.scores = Object.keys(this.state.scores).join(",");
-	console.log("save", this.state.isNew);
+	post.scores = Object.keys(this.state.scores).join(",");	
 
 	if (this.state.isNew) {
 	    request(api.posts.create, post)
@@ -399,7 +399,7 @@ class PostEditor extends Component {
 		<div className="post" id="richEditor" onClick={this.focus}>
 		    <div className="post-header">
 			<div className="float-left">
-			    <User user={this.props.me} />
+			    <User user={this.props.me} size={48} />
 			</div>
 
 			<div className="float-right"> 

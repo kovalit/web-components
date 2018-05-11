@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { slugify } from 'transliter';
 import './publish.scss';
+
+// Modules
+import { slugify } from 'transliter';
+import $ from 'jquery';
+import helpers from 'helpers';
 
 
 class PostPublist extends Component {
@@ -10,16 +14,32 @@ class PostPublist extends Component {
 	
 	this.state = {
 	    preamble: this.props.post.preamble,
+	    images: [],
 	    alias: slugify(this.props.post.title)
 	};
 	
-	this.onChange = this.onChange.bind(this);
+	this.onImageUpload = this.onImageUpload.bind(this);
 	this.onSave = this.onSave.bind(this);
     }
     
-    onChange() {
+    
+    onImageUpload(files) {
+	let reader = new FileReader();
+	let images = this.state.images;
 	
+	reader.onload = () => {
+	    $.post( "https://picture.whatsbetter.me/picture/upload", { base64: reader.result })
+		.done(body => {
+		    images.push(body.hash);
+		    this.setState({
+			images: images
+		    });
+		});	  
+	};
+	
+	reader.readAsDataURL(files[0]);
     }
+    
     
     onSave() {
 	let data = {};
@@ -28,6 +48,10 @@ class PostPublist extends Component {
 	if (this.state.preamble !== "") {
 	    data.preamble = this.state.preamble;
 	}
+	
+	if (this.state.images.length > 0) {
+	    data.preambleImages = this.state.images.join(",");  
+	} 
 	
 	data.published = true;
 	this.props.onPublish(data);
@@ -54,7 +78,12 @@ class PostPublist extends Component {
 		    onChange={(e) => this.setState({preamble: e.target.value})}></textarea>
 
 		<label>Обложка</label>
-		<input type="file" ref="fileInput" onChange={this.onChange} />
+		
+		<For each="image" index="index" of={ this.state.images }>
+		    <img key={index} src={helpers.imgUrl(image)} />
+		</For>
+		
+		<input type="file" ref="fileInput" onChange={(e) => this.onImageUpload(e.target.files) } />
 
 		<div className="post-publish__btn" onClick={this.onSave}>Опубликовать</div>
 	    </div>

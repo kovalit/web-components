@@ -1,12 +1,13 @@
 .posts-item {
-    border-bottom: 1px solid #eee;
-    padding: 8px 0 32px 0;
+    padding: 8px 0 0 0;
+    margin-bottom: 36px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .posts-item-content {
     background-color: #fff;
     border-radius: 8px;
-    width: 700px;
     text-align: left;
     text-decoration: none;
     cursor: pointer;
