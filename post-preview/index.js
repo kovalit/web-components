@@ -46,7 +46,4 @@ const PostPreview = {
 	
 	
 
-    
-
-
 export default PostPreview;
