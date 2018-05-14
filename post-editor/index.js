@@ -300,7 +300,7 @@ class PostEditor extends Component {
     confirmLink(urlValue) {
 	const {editorState} = this.state;
 	const contentState = editorState.getCurrentContent();
-	const contentStateWithEntity = contentState.createEntity('LINK', 'IMMUTABLE', {url: 'http://www.zombo.com'});
+	const contentStateWithEntity = contentState.createEntity('LINK', 'IMMUTABLE', {url: urlValue});
 	
 	const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
 	const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });

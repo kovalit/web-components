@@ -82,39 +82,39 @@
  */
 
 .public-DraftEditorPlaceholder-root {
-  color: #9197a3;
-  position: absolute;
-  z-index: 0;
+    color: #9197a3;
+    position: absolute;
+    z-index: 0;
 }
 
 .public-DraftEditorPlaceholder-hasFocus {
-  color: #bdc1c9;
+    color: #bdc1c9;
 }
 
 .DraftEditorPlaceholder-hidden {
-  display: none;
+    display: none;
 }
 /**
  * @providesModule DraftStyleDefault
  */
 
 .public-DraftStyleDefault-block {
-  position: relative;
-  white-space: pre-wrap;
+    position: relative;
+    white-space: pre-wrap;
 }
 
 /* @noflip */
 
 .public-DraftStyleDefault-ltr {
-  direction: ltr;
-  text-align: left;
+    direction: ltr;
+    text-align: left;
 }
 
 /* @noflip */
 
 .public-DraftStyleDefault-rtl {
-  direction: rtl;
-  text-align: right;
+    direction: rtl;
+    text-align: right;
 }
 
 /**
@@ -124,13 +124,13 @@
 /* @noflip */
 
 .public-DraftStyleDefault-listLTR {
-  direction: ltr;
+    direction: ltr;
 }
 
 /* @noflip */
 
 .public-DraftStyleDefault-listRTL {
-  direction: rtl;
+    direction: rtl;
 }
 
 /**
@@ -139,8 +139,8 @@
 
 .public-DraftStyleDefault-ul,
 .public-DraftStyleDefault-ol {
-  margin: 16px 0;
-  padding: 0;
+    margin: 16px 0;
+    padding: 0;
 }
 
 /**
@@ -152,14 +152,13 @@
 
 /* @noflip */
 
-.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listLTR {
-  margin-left: 1.5em;
-}
-
-/* @noflip */
-
-.public-DraftStyleDefault-depth0.public-DraftStyleDefault-listRTL {
-  margin-right: 1.5em;
+.public-DraftStyleDefault-depth0 {
+    &.public-DraftStyleDefault-listLTR {
+        margin-left: 1.5em;
+    }
+    &.public-DraftStyleDefault-listRTL {
+        margin-right: 1.5em;
+    }
 }
 
 /* @noflip */

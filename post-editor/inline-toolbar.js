@@ -31,6 +31,7 @@ class InlineToolbar extends Component {
 	this.setLink = this.setLink.bind(this);
 	this.addLink = this.addLink.bind(this);
 	this.showLink = this.showLink.bind(this);
+	this.closeLink = this.closeLink.bind(this);
     }
     
     showLink() {
@@ -39,6 +40,10 @@ class InlineToolbar extends Component {
 	    }, 
 	    () => this.linkInput.focus()
 	);
+    }
+    
+    closeLink() {
+	this.setState({showURLInput: false});
     }
     
     
@@ -66,12 +71,19 @@ class InlineToolbar extends Component {
 	    <div className="post-editor-toolbar pet" style={position}>
 		
 		<If condition={this.state.showURLInput}>
-		    <div>
-			<input type="text" 
+		    <div className="pet-link">
+			<input className="pet-link__input" 
+			    type="text" 
+			    placeholder="Введите ссылку"
 			    ref={(input) => { this.linkInput = input; }}  
 			    value={this.state.link} 
 			    onChange={this.setLink} />
-			<button onClick={this.addLink}>ok</button>
+			<div className="pet-link-btn pet-link__add" onClick={this.addLink}>
+			    <i class="fas fa-check-circle"></i>
+			</div>
+			<div className="pet-link-btn pet-link__remove" onClick={this.closeLink}>		
+			    <i className="fas fa-times-circle"></i>	
+			</div>
 		    </div>
 		<Else />
 		
