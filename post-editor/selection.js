@@ -24,8 +24,8 @@ export const getSelectionCoords = (selectionRange) => {
   const offsetLeft = (rangeBounds.left - editorBounds.left)
             + (rangeWidth / 2)
             /* 72px is width of inline toolbar */
-            - (72 / 2);
+            - (280 / 2);
   // 42px is height of inline toolbar (35px) + 5px center triangle and 2px for spacing
-  const offsetTop = rangeBounds.top - editorBounds.top - 42;
+  const offsetTop = rangeBounds.top - 55;
   return { offsetLeft, offsetTop };
 }

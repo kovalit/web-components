@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ToolbarIcon from './toolbar-icon';
+import './inline-toolbar.scss';
+
+import classnames from 'classnames';
 
 const INLINE_STYLES = [
     { icon: 'a-bold', style: 'BOLD', name: "fas fa-bold" },
@@ -60,7 +63,7 @@ class InlineToolbar extends Component {
 	
     
 	return (
-	    <div className="toolbar" id="inlineToolbar" style={position}>
+	    <div className="post-editor-toolbar pet" style={position}>
 		
 		<If condition={this.state.showURLInput}>
 		    <div>
@@ -72,8 +75,8 @@ class InlineToolbar extends Component {
 		    </div>
 		<Else />
 		
-		    <ul className="toolbar-icons">
-			<For each="type" index="index" of={ INLINE_STYLES  }>
+		    <div className="pet-icons">
+			<For each="type" index="index" of={ INLINE_STYLES  }>				
 			    <ToolbarIcon
 				key={type.label || type.icon}
 				active={currentStyle.has(type.style)}
@@ -83,9 +86,9 @@ class InlineToolbar extends Component {
 				style={type.style}/>
 			</For>
 
-			<li className="toolbar-icon" onClick={this.showLink}>	
+			<div className="pet-icons__item" onClick={this.showLink}>	
 			    <i className="fas fa-link"></i>
-			</li>
+			</div>
 
 			<For each="type" index="index" of={ BLOCK_TYPES }>
 			    <ToolbarIcon
@@ -96,7 +99,7 @@ class InlineToolbar extends Component {
 			      onToggle={this.props.toggleBlockType}
 			      style={type.style} />
 			</For>
-		    </ul>
+		    </div>
 		    
 		</If>
 

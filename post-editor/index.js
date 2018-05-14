@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react';
+import './draft.scss';
+
 import { Map } from 'immutable';
 import {
     Editor,
