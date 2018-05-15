@@ -3,10 +3,10 @@ import './side-toolbar.scss';
 
 // modules
 import classnames from 'classnames';
+import helpers from 'helpers';
 
 // components
 import ToolbarIcon from './toolbar-icon';
-
 
 
 class SideToolbar extends Component {
@@ -14,18 +14,29 @@ class SideToolbar extends Component {
 	super(props);
 
 	this.state = {
-	    isExpanded: false
+	    isExpanded: false,
+	    images: []
 	};
 	
-//	document.body.addEventListener("click", ()=> {
-//	    this.setState({isExpanded: false});
-//	});
 	this.onExpand = this.onExpand.bind(this);
     }
   
     onExpand() {
 	let isExpanded = this.state.isExpanded;
 	this.setState({isExpanded: !isExpanded});
+    }
+    
+    
+    onImageUpload(e) {	
+	const f = (body) => {
+	    let images = this.state.images;
+	    images.push(body.hash);
+	    this.setState({
+		images: images
+	    }); 
+	};
+	
+	helpers.imgUpload(e.target.files, f);
     }
     
     render() {

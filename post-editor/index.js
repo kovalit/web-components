@@ -293,8 +293,8 @@ class PostEditor extends Component {
     }
 
     _insertImage(file) {
-	//const entityKey = Entity.create('atomic', 'IMMUTABLE', {src: URL.createObjectURL(file)});
-	//this.onChange(AtomicBlockUtils.insertAtomicBlock(this.state.editorState, entityKey,' '));
+	const entityKey = Entity.create('atomic', 'IMMUTABLE', {src: URL.createObjectURL(file)});
+	this.onChange(AtomicBlockUtils.insertAtomicBlock(this.state.editorState, entityKey,' '));
     }
     
     confirmLink(urlValue) {

@@ -3,7 +3,6 @@ import './publish.scss';
 
 // Modules
 import { slugify } from 'transliter';
-import $ from 'jquery';
 import helpers from 'helpers';
 
 
@@ -22,22 +21,16 @@ class PostPublist extends Component {
 	this.onSave = this.onSave.bind(this);
     }
     
-    
-    onImageUpload(files) {
-	let reader = new FileReader();
-	let images = this.state.images;
-	
-	reader.onload = () => {
-	    $.post( "https://picture.whatsbetter.me/picture/upload", { base64: reader.result })
-		.done(body => {
-		    images.push(body.hash);
-		    this.setState({
-			images: images
-		    });
-		});	  
+    onImageUpload(e) {	
+	const f = (body) => {
+	    let images = this.state.images;
+	    images.push(body.hash);
+	    this.setState({
+		images: images
+	    }); 
 	};
 	
-	reader.readAsDataURL(files[0]);
+	helpers.imgUpload(e.target.files, f);
     }
     
     
@@ -83,7 +76,7 @@ class PostPublist extends Component {
 		    <img key={index} src={helpers.imgUrl(image)} />
 		</For>
 		
-		<input type="file" ref="fileInput" onChange={(e) => this.onImageUpload(e.target.files) } />
+		<input type="file" ref="fileInput" multiple onChange={this.onImageUpload} />
 
 		<div className="post-publish__btn" onClick={this.onSave}>Опубликовать</div>
 	    </div>
