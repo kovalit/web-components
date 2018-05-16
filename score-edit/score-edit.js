@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './bar_criterion.scss';
-import './bar.scss';
 
-class CriterionSlider extends Component {
+import Score from '../score';
+
+
+class ScoreEdit extends Component {
     
     constructor(props) {
 	super(props);
@@ -37,7 +38,7 @@ class CriterionSlider extends Component {
     
     
     getStylesClass() {
-	let names = ["bar", "bar_criterion"];
+	let names = ["score", "score_32"];
 	if (this.props.editable) {
 	    names.push("bar_editable");
 	}
@@ -70,9 +71,6 @@ class CriterionSlider extends Component {
 
 
     handleMouseDown() {
-	if (!this.props.editable) {
-	    return;
-	}
 
 	this.setState({
 	    pos: this.node.getBoundingClientRect()
@@ -98,7 +96,20 @@ class CriterionSlider extends Component {
 	    x = this.state.pos.width;
 	}
 	
+	
+//	if (x < 32) {
+//	    return;
+//	}
+//	if (x > this.state.pos.width - 32) {
+//	    return;
+//	}
+//	
+	
 	let progress = x / this.state.pos.width * 100;
+
+	
+	
+	
 	let value = (2 * x - this.state.pos.width) / this.state.pos.width;
 	value = value.toFixed(2);
 	
@@ -117,23 +128,36 @@ class CriterionSlider extends Component {
     
     
     render() {
-	let {criterion, color, scalegrid} = this.props;
 	
 	return (
-	    <div className={this.getStylesClass()}
-		onMouseDown={this.handleMouseDown}
-		ref={(node) => this.node = node}>
-		
-		<div className="value" style={{width: this.state.progress + "%" , backgroundColor: color}}></div>
-		<div className="slider" style={{left: this.state.progress + "%" }}></div>
-		<span className={`bar_item ${scalegrid ? "bar_scale" : ""} start-label`}>{criterion.label}</span>
-		<span className={`bar_item ${scalegrid ? "bar_scale" : ""} center`}></span>
-		<span className={`bar_item ${scalegrid ? "bar_scale" : ""} end-label`}>
-		    {(this.state.value * 5).toFixed(1)}
-		</span>
+	    <div className="score-edit">
+    
+		<div className="score-slider" 
+		    style={{height: this.props.size || 32}} 
+		    ref={(node) => this.node = node} 
+		    onMouseDown={this.handleMouseDown}
+		>
+		    <div className="score-slider__bublle" style={{left: this.state.progress + "%" }}></div>
+		</div>
+   
+		<Score {...this.props} value={this.state.value} />
+			
 	    </div>
 	);
     }
 };
 
-export default CriterionSlider;
+export default ScoreEdit;
+    
+    {/*
+ * 
+ * 
+ * <div className="score__scale" data-min="-5.0" data-max="5.0">0</div>
+		<div className="score__value" style={{width: this.state.progress + "%" , backgroundColor: color}}></div>
+		<div className="score-slider" style={{left: this.state.progress + "%" }}></div>
+		<span className="score__label score__label_name">{criterion.label}</span>
+		<span className="score__delimiter"></span>
+		<span className="score__label score__label_value">
+		    {(this.state.value * 5).toFixed(1)}
+		</span>
+     */}

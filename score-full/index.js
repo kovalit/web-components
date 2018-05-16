@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import helpers from 'helpers';
 
-import User from 'components/user';
-import ScoreBar from 'components/score-bar';
+import User from '../user';
+import Score from '../score';
 
 import './score-full.scss';
 
@@ -14,7 +14,7 @@ class ScoreFull extends Component {
     
     render() {
 	let {criterion, entity, user, value} = this.props;
-	//console.log("ScoreFull", this.props)
+
 	return (
 	    <div className="score-full">
 		<div className="score-full-entity sfe">

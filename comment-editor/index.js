@@ -5,7 +5,7 @@ import './comment-editor.scss';
 import helpers from 'helpers';
 
 // Components
-import CriterionSlider from 'components/criterion-slider';
+//import CriterionSlider from 'components/criterion-slider';
 
 
 class CommentEditor extends Component {
@@ -88,13 +88,13 @@ class CommentEditor extends Component {
 		<div className="editor-body">
 		    <div className="editor-criterion">
 			<If condition={ this.state.showSlider }>
-			    <CriterionSlider 
+			    {/*<CriterionSlider 
 				onChange={(val)=>this.setState({value: val})}
 				editable={true}
 				scalegrid={false}
 				criterion={this.props.criterion} 
 				value={this.state.sliderValue} 
-				color={this.props.color} />
+				color={this.props.color} />*/}
 			</If>
 
 		    </div>

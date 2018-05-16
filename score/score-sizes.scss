@@ -1,0 +1,43 @@
+@import "styles/constant";
+@import "styles/mixins/text-overflow";
+@import "styles/mixins/image";
+
+.score_12{
+    height: 12px; 
+    line-height: 12px;
+  
+/*    .criterion-bar__score {
+        line-height: 12px;
+        font-size: 10px;
+    }*/
+}
+
+.score_24{
+    height: 24px; 
+    line-height: 24px;
+/*  
+    .criterion-bar__score {
+        line-height: 12px;
+        font-size: 10px;
+    }*/
+}
+
+.score_32{
+    height: 32px; 
+    line-height: 32px;
+  
+/*    .criterion-bar__score {
+        line-height: 32px;
+        font-size: 14px;
+    }*/
+}
+
+.score_48 {
+    height: 48px; 
+    line-height: 48px;
+  
+/*    .criterion-bar__score {
+        line-height: 32px;
+        font-size: 14px;
+    }*/
+}

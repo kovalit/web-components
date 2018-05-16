@@ -2,7 +2,7 @@ import React from 'react';
 import helpers from 'helpers';
 
 import CardNumber from 'components/card-number';
-import CriterionSlider from 'components/criterion-slider';
+//import CriterionSlider from 'components/criterion-slider';
 
 import Comment from 'components/comment';
 import CommentEditor from 'components/comment-editor';
@@ -42,12 +42,12 @@ const Card = (props) => {
 	
 		    <div key={index}  onClick={()=>props.toggleScores(entity.id, item.criteriaId, item.isOpen )}>
 			
-			<CriterionSlider 
+			{/*<CriterionSlider 
 			    editable={false}
 			    scalegrid={index === 0}
 			    criterion={criteria[item.criteriaId]} 
 			    value={item.value} 
-			    color={criteria[item.criteriaId].color} />
+			    color={criteria[item.criteriaId].color} />*/}
 			    
 			    
 		    </div>

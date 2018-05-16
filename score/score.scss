@@ -1,0 +1,87 @@
+@import "styles/constant";
+@import "styles/mixins/text-overflow";
+@import "styles/mixins/animation";
+@import "styles/mixins/image";
+
+.score {
+    background: #D5D5D5;
+    position: relative;
+    border-radius: 4px;
+    min-width: 44px;
+    text-align: center;
+    font-size: 13px;
+    font-family: LatoBold;
+}
+
+.score__label {
+    position: absolute;
+    display: inline-block;
+    height: inherit;
+    line-height: inherit;
+    font-size: 13px;
+    float: left;
+    color: #333333;
+    text-transform: lowercase;
+    text-align: left;
+    @include  text-overflow;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none;
+    
+    &_name{
+        left: 10px;
+        width: calc(100% - 50px);
+    }
+    
+    &_value{
+        right: 0px;
+        text-align: center;
+        width: 32px;
+    }
+}
+
+.score__delimiter {
+    position: absolute;
+    width: 8px;
+    height: inherit;
+    @include background-image("criteria/middle.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    left: 50%;
+    margin-left: -4px;
+}
+
+.score__scale {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    text-align: center;
+    font-size: 10px;
+    height: 16px;
+    line-height: 16px;
+    color: #bdbdbd;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+     -khtml-user-select: none; 
+       -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none;
+    
+    &:after {
+        content: attr(data-max);
+        position: absolute;
+        right: 0;
+    }
+    
+    &:before {
+        content: attr(data-min);
+        position: absolute;
+        left: 0;
+    }
+    
+}
